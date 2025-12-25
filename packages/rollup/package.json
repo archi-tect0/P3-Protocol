@@ -1,0 +1,39 @@
+{
+  "name": "@p3/rollup",
+  "version": "1.0.0",
+  "description": "L3 Rollup Infrastructure for P3 Protocol",
+  "main": "./sequencer/index.ts",
+  "types": "./sequencer/index.ts",
+  "bin": {
+    "rollup": "./cli.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node -r esbuild-register cli.ts start --all",
+    "cli": "node -r esbuild-register cli.ts"
+  },
+  "keywords": [
+    "rollup",
+    "l3",
+    "ethereum",
+    "blockchain",
+    "data-availability",
+    "checkpoint"
+  ],
+  "author": "P3 Protocol",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.15.0",
+    "merkletreejs": "latest",
+    "rocksdb": "latest",
+    "level": "latest",
+    "ethereum-cryptography": "^2.2.1",
+    "commander": "^4.1.1",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.7.3",
+    "esbuild-register": "^3.6.0"
+  }
+}

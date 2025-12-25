@@ -1,0 +1,12 @@
+# Rust build artifacts
+target/
+Cargo.lock
+
+# WASM build output
+pkg/
+
+# Backup files
+**/*.rs.bk
+
+# Debug symbols
+*.pdb

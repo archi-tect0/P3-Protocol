@@ -1,0 +1,83 @@
+{
+  "version": "1.0.0",
+  "narrations": {
+    "welcome": {
+      "id": "welcome",
+      "text": "Hello, I'm Atlas. I'm your personal interface to the decentralized web. Let's get you set up in just a moment.",
+      "stage": "intro",
+      "order": 1
+    },
+    "userTypePrompt": {
+      "id": "userTypePrompt",
+      "text": "First, tell me how you'd like to use Atlas. Are you here as an end user exploring apps, or as a developer building on the platform?",
+      "stage": "intro",
+      "order": 2
+    },
+    "faceSetup": {
+      "id": "faceSetup",
+      "text": "I can appear in different visual styles. Choose a face that suits you, from minimal dots to flowing particles. You can always change this later in settings.",
+      "stage": "setup",
+      "order": 3
+    },
+    "endUser": {
+      "weather": {
+        "id": "demo_weather",
+        "text": "These cards are auto-materialized from public endpoints. No app store, no downloads—just live data rendered directly onto your canvas.",
+        "stage": "demo",
+        "order": 4
+      },
+      "crypto": {
+        "id": "demo_crypto",
+        "text": "Real-time prices, no frontend code required. Any developer can register an endpoint, and Atlas renders it as a tile you can pin or dismiss.",
+        "stage": "demo",
+        "order": 5
+      },
+      "chat": {
+        "id": "demo_chat",
+        "text": "You can talk to me directly, or choose which AI engine powers my responses. Your preferences are stored locally, encrypted by your wallet.",
+        "stage": "demo",
+        "order": 6
+      },
+      "receipts": {
+        "id": "demo_receipts",
+        "text": "Every action you take emits a receipt—cryptographically signed proof of what happened. These receipts are yours to keep, share, or anchor on-chain.",
+        "stage": "demo",
+        "order": 7
+      },
+      "wrapup": {
+        "id": "demo_wrapup",
+        "text": "Atlas isn't an app. I'm your substrate—a composable layer that connects you to decentralized services while you stay in control of your data.",
+        "stage": "complete",
+        "order": 8
+      }
+    },
+    "developer": {
+      "hubApps": {
+        "id": "dev_hub",
+        "text": "The Hub is where apps live. Register your endpoints with a JSON schema, and Atlas auto-generates UI tiles. No frontend code needed.",
+        "stage": "demo",
+        "order": 4
+      },
+      "devkit": {
+        "id": "dev_devkit",
+        "text": "DevKit lets you query the registry, inspect flows, and debug execution in real-time. Everything is observable and receipt-backed.",
+        "stage": "demo",
+        "order": 5
+      },
+      "infrastructure": {
+        "id": "dev_infra",
+        "text": "Under the hood: session bridging, wallet-scoped memory, and a rule engine that maps natural language to flows. Build once, run everywhere Atlas runs.",
+        "stage": "demo",
+        "order": 6
+      },
+      "wrapup": {
+        "id": "dev_wrapup",
+        "text": "You're ready to build. Check the docs, register your first endpoint, and watch Atlas render it live. Welcome to the protocol layer.",
+        "stage": "complete",
+        "order": 7
+      }
+    }
+  },
+  "stages": ["intro", "setup", "demo", "complete"],
+  "userTypes": ["endUser", "developer"]
+}

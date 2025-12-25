@@ -1,0 +1,46 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rocketGradM" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="flameGradM" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="50%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="glassGradM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <filter id="glow2M">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="512" height="512" fill="#0b0f14"/>
+  
+  <g transform="translate(256, 256) rotate(-45) scale(0.65)">
+    <path d="M0 -133 Q80 -107 107 0 Q80 107 0 133 Q-80 107 -107 0 Q-80 -107 0 -133" fill="url(#rocketGradM)"/>
+    
+    <ellipse cx="0" cy="-40" rx="32" ry="40" fill="url(#glassGradM)" filter="url(#glow2M)"/>
+    <ellipse cx="-11" cy="-48" rx="8" ry="11" fill="#fff" opacity="0.8"/>
+    
+    <path d="M-67 67 L-93 120 L-53 93 Z" fill="url(#rocketGradM)"/>
+    <path d="M67 67 L93 120 L53 93 Z" fill="url(#rocketGradM)"/>
+    <path d="M0 120 L-27 147 L0 133 L27 147 Z" fill="url(#rocketGradM)"/>
+    
+    <g filter="url(#glow2M)">
+      <path d="M-40 147 Q0 213 40 147 Q0 187 -40 147" fill="url(#flameGradM)"/>
+      <path d="M-27 160 Q0 227 27 160 Q0 200 -27 160" fill="#fbbf24"/>
+    </g>
+    
+    <circle cx="-40" cy="27" r="11" fill="#0891b2"/>
+    <circle cx="40" cy="27" r="11" fill="#0891b2"/>
+  </g>
+</svg>

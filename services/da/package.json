@@ -1,0 +1,12 @@
+{
+  "name": "da",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "ethers": "^6.13.1",
+    "@noble/hashes": "^1.4.0"
+  }
+}

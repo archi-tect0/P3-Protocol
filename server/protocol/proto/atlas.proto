@@ -1,0 +1,304 @@
+// Atlas API 2.0 - Protocol Buffer Definitions
+// Supports all 8 priority lanes with binary encoding
+
+syntax = "proto3";
+package atlas;
+
+// Lane 1: ACCESS - Authentication and capabilities
+message AccessRequest {
+  string client_id = 1;
+  string wallet = 2;
+  repeated string requested_capabilities = 3;
+}
+
+message AccessResponse {
+  bool ok = 1;
+  string session_id = 2;
+  repeated string capabilities = 3;
+  int64 expires_at = 4;
+}
+
+message AccessTokenRefresh {
+  string session_id = 1;
+  string refresh_token = 2;
+}
+
+// Lane 2: MANIFESTS - Content manifests and metadata
+message ManifestQuery {
+  string type = 1;
+  string id = 2;
+  repeated string fields = 3;
+}
+
+message ManifestSlice {
+  string id = 1;
+  string kind = 2;
+  string url = 3;
+  int64 expires_at = 4;
+  bytes payload = 5;
+  map<string, string> metadata = 6;
+}
+
+message CatalogQuery {
+  string category = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+  string sort_by = 4;
+  repeated string filters = 5;
+}
+
+message CatalogSlice {
+  repeated CatalogItem items = 1;
+  int32 total = 2;
+  bool has_more = 3;
+}
+
+message CatalogItem {
+  string id = 1;
+  int32 title_token = 2;
+  string title_raw = 3;
+  int32 category_token = 4;
+  int32 content_type_token = 5;
+  int32 provider_token = 6;
+  int32 price_cents = 7;
+  string thumbnail_url = 8;
+  float rating = 9;
+}
+
+// Lane 3: RECEIPTS - Ledger and analytics
+message Receipt {
+  string session_id = 1;
+  string action = 2;
+  string item_id = 3;
+  string anchor_tx = 4;
+  int64 timestamp = 5;
+  bytes signature = 6;
+  map<string, string> metadata = 7;
+}
+
+message ReceiptAck {
+  bool recorded = 1;
+  string receipt_id = 2;
+  string anchor_status = 3;
+}
+
+message ReceiptBatch {
+  repeated Receipt receipts = 1;
+}
+
+// Lane 4: MEDIA - Streaming and real-time media
+message MediaSliceRequest {
+  string stream_id = 1;
+  uint32 offset = 2;
+  uint32 chunk_size = 3;
+  string quality = 4;
+}
+
+message MediaSlice {
+  string stream_id = 1;
+  uint32 offset = 2;
+  bytes data = 3;
+  uint32 duration_ms = 4;
+  bool is_last = 5;
+}
+
+message StreamManifest {
+  string stream_id = 1;
+  string format = 2;
+  repeated QualityLevel qualities = 3;
+  int64 total_duration_ms = 4;
+}
+
+message QualityLevel {
+  string id = 1;
+  int32 bitrate = 2;
+  int32 width = 3;
+  int32 height = 4;
+}
+
+// Lane 5: COMMERCE - Cart, checkout, payments
+message CommerceIntent {
+  string sku = 1;
+  uint32 qty = 2;
+  string action = 3;
+  map<string, string> options = 4;
+}
+
+message CommerceAck {
+  string intent_id = 1;
+  bool accepted = 2;
+  string status = 3;
+  int32 total_cents = 4;
+}
+
+message CartState {
+  repeated CartItem items = 1;
+  int32 subtotal_cents = 2;
+  int32 tax_cents = 3;
+  int32 total_cents = 4;
+}
+
+message CartItem {
+  string sku = 1;
+  string title = 2;
+  uint32 qty = 3;
+  int32 price_cents = 4;
+}
+
+message CheckoutRequest {
+  string cart_id = 1;
+  string payment_method = 2;
+  string wallet_address = 3;
+}
+
+message CheckoutResponse {
+  bool success = 1;
+  string order_id = 2;
+  string transaction_hash = 3;
+  string receipt_url = 4;
+}
+
+// Lane 6: GOVERNANCE - Votes, proposals, policies
+message GovernanceVote {
+  string proposal_id = 1;
+  string voter = 2;
+  string choice = 3;
+  int64 weight = 4;
+  bytes signature = 5;
+}
+
+message GovernanceAck {
+  bool recorded = 1;
+  string vote_id = 2;
+  int64 new_tally = 3;
+}
+
+message Proposal {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  repeated string choices = 4;
+  int64 start_time = 5;
+  int64 end_time = 6;
+  string status = 7;
+}
+
+message ProposalList {
+  repeated Proposal proposals = 1;
+  int32 total = 2;
+}
+
+// Lane 7: NOTIFICATIONS - Push notifications
+message Notification {
+  string id = 1;
+  string topic = 2;
+  string message = 3;
+  string priority = 4;
+  int64 timestamp = 5;
+  map<string, string> data = 6;
+}
+
+message NotificationAck {
+  string notification_id = 1;
+  bool delivered = 2;
+}
+
+message NotificationSubscribe {
+  repeated string topics = 1;
+  string device_token = 2;
+}
+
+// Lane 8: CHAT - Real-time messaging
+message ChatMessage {
+  string id = 1;
+  string room = 2;
+  string sender = 3;
+  string text = 4;
+  int64 timestamp = 5;
+  repeated Attachment attachments = 6;
+}
+
+message Attachment {
+  string type = 1;
+  string url = 2;
+  string name = 3;
+  int64 size = 4;
+}
+
+message ChatAck {
+  string message_id = 1;
+  bool delivered = 2;
+  int64 server_timestamp = 3;
+}
+
+message PresenceUpdate {
+  string user = 1;
+  string status = 2;
+  int64 last_seen = 3;
+}
+
+message RoomJoin {
+  string room = 1;
+  string user = 2;
+}
+
+message RoomLeave {
+  string room = 1;
+  string user = 2;
+}
+
+// Handshake messages
+message HandshakeRequest {
+  string client_id = 1;
+  string wallet = 2;
+  repeated string transports = 3;
+  repeated string encodings = 4;
+  repeated int32 lanes = 5;
+  repeated string dictionary_tokens = 6;
+  DeviceInfo device = 7;
+}
+
+message DeviceInfo {
+  string platform = 1;
+  string version = 2;
+  int32 screen_width = 3;
+  int32 screen_height = 4;
+  float dpr = 5;
+}
+
+message HandshakeResponse {
+  string session_id = 1;
+  string transport = 2;
+  repeated LaneConfig lanes = 3;
+  DictionaryInfo dictionary = 4;
+  int64 server_time = 5;
+  int32 ttl_seconds = 6;
+  ProtocolInfo protocol = 7;
+}
+
+message LaneConfig {
+  int32 id = 1;
+  string name = 2;
+  string encoding = 3;
+  string url = 4;
+}
+
+message DictionaryInfo {
+  string version = 1;
+  repeated string tokens = 2;
+  map<string, int32> index_map = 3;
+}
+
+message ProtocolInfo {
+  string version = 1;
+  repeated string features = 2;
+}
+
+// Generic frame wrapper
+message Frame {
+  int32 lane_id = 1;
+  string frame_type = 2;
+  int64 timestamp = 3;
+  bytes payload = 4;
+  uint32 crc32 = 5;
+}

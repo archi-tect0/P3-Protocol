@@ -1,0 +1,26 @@
+{
+  "roles": {
+    "user": {
+      "grants": ["registry", "messages", "notes", "gallery", "marketplace", "wallet"],
+      "description": "Standard end-user with access to personal apps"
+    },
+    "moderator": {
+      "grants": ["registry", "messages", "moderator", "wallet"],
+      "description": "Content moderator with queue access"
+    },
+    "admin": {
+      "grants": ["registry", "messages", "admin", "moderator", "wallet"],
+      "description": "Platform administrator with full access"
+    },
+    "developer": {
+      "grants": ["registry", "wallet", "anchors"],
+      "description": "Third-party app developer"
+    }
+  },
+  "policy": {
+    "defaultTTL": 3600000,
+    "refreshWindow": 300000,
+    "reviewScopes": ["payments", "dao", "anchors", "admin"],
+    "autoConsentScopes": ["registry", "wallet", "proxy", "messages", "storage", "media"]
+  }
+}

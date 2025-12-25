@@ -1,0 +1,57 @@
+[
+  {
+    "id": "daily_health_check",
+    "title": "Daily Health Check",
+    "description": "Run at 9am to check visitor metrics and error logs",
+    "steps": [
+      { "key": "metrics.visitors", "args": { "range": "day" } },
+      { "key": "logs.recent", "args": { "severity": "error", "range": "day" } }
+    ],
+    "requiredScopes": ["admin"],
+    "roles": ["admin"],
+    "triggers": [
+      { "type": "cron", "expr": "0 9 * * *" }
+    ]
+  },
+  {
+    "id": "error_spike_alert",
+    "title": "Error Spike Alert",
+    "description": "Notify admin when error rate exceeds threshold",
+    "steps": [
+      { "key": "messages.notify", "args": { "recipient": "admin", "message": "High error rate detected - review logs immediately" } }
+    ],
+    "requiredScopes": ["messages", "admin"],
+    "roles": ["admin"],
+    "triggers": [
+      { "type": "threshold", "metric": "errorspermin", "gte": 3 }
+    ]
+  },
+  {
+    "id": "weekly_report",
+    "title": "Weekly Summary",
+    "description": "Generate weekly metrics summary every Monday at 8am",
+    "steps": [
+      { "key": "metrics.visitors", "args": { "range": "week" } },
+      { "key": "metrics.adoption", "args": { "range": "week" } },
+      { "key": "logs.recent", "args": { "severity": "error", "range": "week" } }
+    ],
+    "requiredScopes": ["admin"],
+    "roles": ["admin"],
+    "triggers": [
+      { "type": "cron", "expr": "0 8 * * 1" }
+    ]
+  },
+  {
+    "id": "moderation_queue_check",
+    "title": "Moderation Queue Alert",
+    "description": "Alert moderators when queue items exceed threshold",
+    "steps": [
+      { "key": "messages.notify", "args": { "recipient": "moderators", "message": "Moderation queue needs attention" } }
+    ],
+    "requiredScopes": ["messages", "moderator"],
+    "roles": ["moderator", "admin"],
+    "triggers": [
+      { "type": "threshold", "metric": "moderation_queue", "gte": 10 }
+    ]
+  }
+]

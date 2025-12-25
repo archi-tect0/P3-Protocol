@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BlockDrop</title>
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#0b0f14" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0b0f14; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    #topbar { position: fixed; top: 0; left: 0; right: 0; height: 48px; background: rgba(11, 15, 20, 0.9); backdrop-filter: blur(10px); display: flex; align-items: center; padding: 0 16px; gap: 12px; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .stat { font-size: 14px; font-weight: 500; padding: 4px 12px; border-radius: 16px; }
+    #score { color: #4ecdc4; background: rgba(78, 205, 196, 0.15); }
+    #lines { color: #ffd93d; background: rgba(255, 217, 61, 0.15); }
+    #level { color: #f093fb; background: rgba(240, 147, 251, 0.15); }
+    button { padding: 8px 16px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
+    #startBtn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+    #anchorBtn { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; margin-left: auto; }
+    #installBtn { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; }
+    button:hover { transform: translateY(-1px); }
+    #gameContainer { position: fixed; top: 48px; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; }
+    #gameCanvas { display: block; border: 2px solid #333; }
+    #nextPiece { position: absolute; top: 60px; right: 20px; width: 100px; height: 100px; background: rgba(0,0,0,0.3); border: 1px solid #333; border-radius: 8px; }
+    #controls { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+    .control-btn { width: 50px; height: 50px; font-size: 20px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; }
+    @media (max-width: 600px) { #topbar { height: 56px; padding: 0 8px; gap: 6px; } button, .stat { padding: 6px 10px; font-size: 11px; } }
+    @media (min-width: 600px) { #controls { display: none; } }
+  </style>
+</head>
+<body>
+  <div id="topbar">
+    <span id="score" class="stat" data-testid="text-blockdrop-score">Score: 0</span>
+    <span id="lines" class="stat" data-testid="text-blockdrop-lines">Lines: 0</span>
+    <span id="level" class="stat" data-testid="text-blockdrop-level">Level: 1</span>
+    <button id="startBtn" data-testid="button-blockdrop-start">Start</button>
+    <button id="anchorBtn" data-testid="button-blockdrop-anchor">Anchor Score</button>
+    <button id="installBtn" hidden data-testid="button-blockdrop-install">Install</button>
+  </div>
+  <div id="gameContainer">
+    <canvas id="gameCanvas"></canvas>
+    <canvas id="nextPiece"></canvas>
+    <div id="controls">
+      <button class="control-btn" id="leftBtn" data-testid="button-blockdrop-left">←</button>
+      <button class="control-btn" id="rotateBtn" data-testid="button-blockdrop-rotate">↻</button>
+      <button class="control-btn" id="rightBtn" data-testid="button-blockdrop-right">→</button>
+      <button class="control-btn" id="downBtn" data-testid="button-blockdrop-down">↓</button>
+    </div>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>

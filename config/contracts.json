@@ -1,0 +1,38 @@
+{
+  "mainnet": {
+    "name": "Base Mainnet",
+    "chainId": 8453,
+    "rpcUrl": "https://mainnet.base.org",
+    "explorer": "https://basescan.org",
+    "anchoringFee": "0.00015",
+    "treasuryWallet": "0x662850fe69062c0b3cb16664ac15ccc3944b8a32",
+    "contracts": {
+      "anchorRegistry": "0x2539823790424051Eb03eBea1EA9bc40A475A34D",
+      "consentRegistry": "0x2539823790424051Eb03eBea1EA9bc40A475A34D",
+      "receiptBoundToken": "0x2539823790424051Eb03eBea1EA9bc40A475A34D",
+      "governanceToken": "0x2539823790424051Eb03eBea1EA9bc40A475A34D",
+      "governor": "0x2539823790424051Eb03eBea1EA9bc40A475A34D",
+      "treasury": "0x2539823790424051Eb03eBea1EA9bc40A475A34D",
+      "trustPolicyRouter": "0x2539823790424051Eb03eBea1EA9bc40A475A34D",
+      "zkReceiptsVerifier": "0x2539823790424051Eb03eBea1EA9bc40A475A34D"
+    }
+  },
+  "sepolia": {
+    "name": "Base Sepolia",
+    "chainId": 84532,
+    "rpcUrl": "https://sepolia.base.org",
+    "explorer": "https://sepolia.basescan.org",
+    "anchoringFee": "0.00015",
+    "treasuryWallet": "0x662850fe69062c0b3cb16664ac15ccc3944b8a32",
+    "contracts": {
+      "anchorRegistry": "0xD0b8f9f6c9055574D835355B466C418b7558aCE0",
+      "consentRegistry": "0xD0b8f9f6c9055574D835355B466C418b7558aCE0",
+      "receiptBoundToken": "0xD0b8f9f6c9055574D835355B466C418b7558aCE0",
+      "governanceToken": "0xD0b8f9f6c9055574D835355B466C418b7558aCE0",
+      "governor": "0xD0b8f9f6c9055574D835355B466C418b7558aCE0",
+      "treasury": "0xD0b8f9f6c9055574D835355B466C418b7558aCE0",
+      "trustPolicyRouter": "0xD0b8f9f6c9055574D835355B466C418b7558aCE0",
+      "zkReceiptsVerifier": "0xD0b8f9f6c9055574D835355B466C418b7558aCE0"
+    }
+  }
+}

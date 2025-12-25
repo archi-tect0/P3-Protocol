@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug - P3 Protocol</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #1e293b;
+      color: #f1f5f9;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .log { padding: 4px 0; border-bottom: 1px solid #334155; }
+    .error { color: #ef4444; }
+    .success { color: #10b981; }
+    #status { margin-bottom: 20px; padding: 10px; background: #334155; }
+  </style>
+</head>
+<body>
+  <div id="status">🔍 JavaScript Debug Test</div>
+  <div id="logs"></div>
+  
+  <script>
+    const logs = document.getElementById('logs');
+    const status = document.getElementById('status');
+    
+    function log(msg, type = 'log') {
+      const div = document.createElement('div');
+      div.className = `log ${type}`;
+      div.textContent = `[${new Date().toISOString()}] ${msg}`;
+      logs.appendChild(div);
+      console.log(msg);
+    }
+    
+    log('✓ Debug page loaded', 'success');
+    log('User agent: ' + navigator.userAgent);
+    log('Location: ' + window.location.href);
+    
+    // Test if we can load the main bundle
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = '/assets/index-CsUpdpf8.js';
+    
+    script.onload = () => {
+      log('✓ Main JS bundle loaded successfully!', 'success');
+      status.textContent = '✓ JavaScript is working!';
+      status.style.background = '#10b981';
+    };
+    
+    script.onerror = (e) => {
+      log('✗ Failed to load main JS bundle', 'error');
+      log('Error: ' + e.toString(), 'error');
+      status.textContent = '✗ JavaScript bundle failed to load';
+      status.style.background = '#ef4444';
+    };
+    
+    document.head.appendChild(script);
+    
+    // Also check if service worker is interfering
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        if (registrations.length > 0) {
+          log(`⚠ Found ${registrations.length} service worker(s)`, 'error');
+          registrations.forEach((reg, i) => {
+            log(`  SW ${i}: ${reg.scope}`, 'error');
+          });
+          log('This might be causing caching issues!', 'error');
+        } else {
+          log('✓ No service workers registered', 'success');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

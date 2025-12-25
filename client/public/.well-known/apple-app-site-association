@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.io.dciphrs.launcher",
+        "paths": ["/launcher", "/launcher/*"]
+      },
+      {
+        "appID": "TEAMID.io.dciphrs.app",
+        "paths": ["/app", "/app/*"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Page</title>
+</head>
+<body style="background: #000; color: #0f0; padding: 20px; font-family: monospace;">
+  <h1>✓ Server is working!</h1>
+  <p>If you see this, the server is serving static files correctly.</p>
+  <p>Time: <span id="time"></span></p>
+  <script>
+    document.getElementById('time').textContent = new Date().toISOString();
+    console.log('Test page loaded successfully');
+  </script>
+</body>
+</html>

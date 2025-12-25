@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0b0f14;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: rgba(11, 15, 20, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#status {
+  color: #ff6b6b;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 12px;
+  background: rgba(255, 107, 107, 0.15);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+#status.connected {
+  color: #4ecdc4;
+  background: rgba(78, 205, 196, 0.15);
+}
+
+#status.streaming {
+  color: #45b7d1;
+  background: rgba(69, 183, 209, 0.15);
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#connectBtn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+#connectBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+#connectBtn.connected {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+}
+
+#buyBtn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+#buyBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+}
+
+#buyBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#squadBtn {
+  background: linear-gradient(135deg, #ffd93d 0%, #ff6b6b 100%);
+  color: #1a1a2e;
+}
+
+#squadBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 217, 61, 0.4);
+}
+
+#installBtn {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  margin-left: auto;
+}
+
+#installBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(56, 239, 125, 0.4);
+}
+
+#videoContainer {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b0f14;
+}
+
+#gameVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: none;
+}
+
+#gameVideo.active {
+  display: block;
+}
+
+#fallbackCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#fallbackCanvas.hidden {
+  display: none;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.loading #status {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@media (max-width: 600px) {
+  #topbar {
+    height: 56px;
+    padding: 0 8px;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  #status {
+    font-size: 12px;
+    order: -1;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  
+  #videoContainer {
+    top: 80px;
+  }
+}

@@ -1,0 +1,24 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#7c3aed"/>
+  <text 
+    x="256" 
+    y="200" 
+    text-anchor="middle" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-weight="900" 
+    font-size="130"
+    fill="white"
+  >P3</text>
+  <line x1="80" y1="230" x2="432" y2="230" stroke="white" stroke-width="4" />
+  <text 
+    x="256" 
+    y="300" 
+    text-anchor="middle" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-weight="500" 
+    font-size="34"
+    letter-spacing="4"
+    fill="white"
+  >{ ENTERPRISE }</text>
+  <line x1="80" y1="330" x2="432" y2="330" stroke="white" stroke-width="4" />
+</svg>

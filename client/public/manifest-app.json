@@ -1,0 +1,81 @@
+{
+  "name": "Atlas",
+  "short_name": "Atlas",
+  "description": "Atlas (BETA) - Web3 Substrate Mesh with encrypted messaging, voice calls, payments, and DAO governance with blockchain anchoring",
+  "start_url": "/atlas?v=20251212",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0f14",
+  "theme_color": "#0ea5e9",
+  "categories": ["communication", "security", "finance"],
+  "id": "/atlas",
+  "icons": [
+    {
+      "src": "/icons/owl-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/owl-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/owl-maskable.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Go to Inbox",
+      "short_name": "Inbox",
+      "description": "Open your encrypted inbox",
+      "url": "/atlas?mode=inbox",
+      "icons": [{ "src": "/icons/owl-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Open News",
+      "short_name": "News",
+      "description": "Latest news and updates",
+      "url": "/atlas?mode=news",
+      "icons": [{ "src": "/icons/owl-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Random Wiki",
+      "short_name": "Wiki",
+      "description": "Discover random Wikipedia articles",
+      "url": "/atlas?mode=wikipedia&action=random",
+      "icons": [{ "src": "/icons/owl-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Live TV",
+      "short_name": "TV",
+      "description": "Watch 10,000+ live TV channels",
+      "url": "/atlas?mode=tv",
+      "icons": [{ "src": "/icons/owl-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Open Radio",
+      "short_name": "Radio",
+      "description": "Listen to internet radio stations",
+      "url": "/atlas?mode=radio",
+      "icons": [{ "src": "/icons/owl-192.svg", "sizes": "192x192" }]
+    }
+  ],
+  "share_target": {
+    "action": "/atlas/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}

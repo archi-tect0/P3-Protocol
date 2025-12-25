@@ -1,0 +1,36 @@
+{
+  "capturedAt": "2025-12-24T03:51:34.000Z",
+  "commits": {
+    "today": 15,
+    "thisWeek": 18,
+    "thisMonth": 1108,
+    "total": 1186
+  },
+  "linesOfCode": {
+    "typescript": 281199,
+    "javascript": 9627,
+    "css": 974,
+    "json": 130496,
+    "solidity": 2086,
+    "html": 602,
+    "shell": 463,
+    "code": 294951,
+    "total": 425447,
+    "added": 1864,
+    "removed": 916,
+    "net": 948
+  },
+  "files": {
+    "created": 5,
+    "modified": 8,
+    "deleted": 0
+  },
+  "buildSize": {
+    "clientMB": 7.9,
+    "totalMB": 11.4
+  },
+  "contributors": 2,
+  "branches": 3,
+  "healthScore": 100,
+  "narrative": "Production snapshot: 1186 commits, 425K total lines (294K code) across 2 contributors."
+}

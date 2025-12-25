@@ -1,0 +1,83 @@
+node_modules
+dist
+.env
+*.log
+.DS_Store
+client/dist
+
+# Backup files
+*.tar.gz
+*.zip
+p3-protocol-backup-*
+
+# Attached assets (dev reference only)
+attached_assets/
+
+# Proprietary apps (not open-source)
+alexa-skill/
+roku/
+wearos-app/
+
+# Private/internal docs
+audit/
+SECURITY_AUDIT.md
+DEPLOYMENT.md
+DEPLOYMENT_FIX.md
+DEPLOYMENT_FIXES_SUMMARY.md
+IPFS_PRODUCTION_SETUP.md
+PRODUCTION_READY.md
+Replitbak.md
+README_CONTRACTS.md
+SUMMARY.md
+
+# Internal dev notes (not for open source)
+docs/deck-narrative-mesh-resilience.md
+docs/ENTERPRISE_GAP_ANALYSIS.md
+docs/ORPHAN_CODE_AUDIT.md
+docs/NEXUS_CANVAS_INTEGRATION.md
+docs/P3-PROTOCOL-EXPLAINED.txt
+docs/DEPLOYMENT.md
+docs/RUNBOOK.md
+
+# GitHub workflows (OAuth permission issue)
+.github/
+
+# Replit-specific files
+.replit
+.replit*
+replit.md
+replit_zip_error_log.txt
+
+# Report cards and internal docs
+*REPORT_CARD*.txt
+*report_card*.txt
+
+# Docker and deployment scripts
+Dockerfile
+.dockerignore
+deploy.sh
+start.sh
+fix-error-handlers.sh
+
+# Environment files (keep .env.example if needed)
+.env.production
+.env.local
+
+# Test and observability configs
+test-observability.ts
+playwright.config.ts
+
+# Cache and build artifacts
+cache/
+artifacts/
+logs/
+
+# Changelog (optional - remove if you want to include it)
+CHANGELOG.md
+
+# Drizzle migration files
+drizzle/
+
+# Temporary/accidental files
+1
+2

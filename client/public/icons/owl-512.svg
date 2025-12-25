@@ -1,0 +1,55 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="owlBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="owlFaceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="eyeGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="512" height="512" rx="64" fill="#0b0f14"/>
+  
+  <g transform="translate(256, 256)">
+    <path d="M-155 -40 L-195 0 L-155 40 L-155 -40" fill="url(#owlBodyGrad)"/>
+    <path d="M155 -40 L195 0 L155 40 L155 -40" fill="url(#owlBodyGrad)"/>
+    
+    <path d="M0 -179 L-128 -77 L-155 51 L-77 155 L0 128 L77 155 L155 51 L128 -77 Z" fill="url(#owlBodyGrad)"/>
+    
+    <path d="M0 -155 L-101 -51 L-112 40 L-40 101 L0 83 L40 101 L112 40 L101 -51 Z" fill="url(#owlFaceGrad)"/>
+    
+    <ellipse cx="-61" cy="-11" rx="51" ry="61" fill="#0b0f14"/>
+    <ellipse cx="61" cy="-11" rx="51" ry="61" fill="#0b0f14"/>
+    
+    <g filter="url(#glow)">
+      <ellipse cx="-61" cy="-11" rx="35" ry="45" fill="url(#eyeGlowGrad)"/>
+      <ellipse cx="61" cy="-11" rx="35" ry="45" fill="url(#eyeGlowGrad)"/>
+    </g>
+    
+    <ellipse cx="-51" cy="-21" rx="11" ry="16" fill="#fff" opacity="0.9"/>
+    <ellipse cx="72" cy="-21" rx="11" ry="16" fill="#fff" opacity="0.9"/>
+    
+    <circle cx="-61" cy="0" r="11" fill="#0b0f14"/>
+    <circle cx="61" cy="0" r="11" fill="#0b0f14"/>
+    
+    <path d="M-27 40 L0 72 L27 40" fill="none" stroke="#f97316" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <path d="M-40 -144 L-77 -195 L-27 -155" fill="url(#owlBodyGrad)"/>
+    <path d="M40 -144 L77 -195 L27 -155" fill="url(#owlBodyGrad)"/>
+  </g>
+</svg>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icons/atlas-logo.svg" />
+    <link rel="apple-touch-icon" href="/icons/atlas-192.svg" />
+    <link rel="manifest" href="/manifest-app.json" id="pwa-manifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="P3 Protocol" />
+    <meta name="application-name" content="P3 Protocol" />
+    <meta name="theme-color" content="#8b5cf6" />
+    
+    <!-- Cache Control - Force no caching of HTML -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="P3 Protocol - Web3 Mesh Operating System. Voice-first Atlas substrate for encrypted messaging, payments, and decentralized apps." />
+    <meta name="keywords" content="P3 Protocol, Atlas, Web3, blockchain, encrypted messaging, decentralized apps, wallet SSO, DAO governance, voice assistant" />
+    <meta name="author" content="P3 Protocol" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://p3protocol.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://p3protocol.com/" />
+    <meta property="og:title" content="P3 Protocol - Web3 Mesh Operating System" />
+    <meta property="og:description" content="Voice-first Atlas substrate with end-to-end encryption, blockchain anchoring, and 100+ app integrations" />
+    <meta property="og:image" content="https://p3protocol.com/icons/atlas-512.svg" />
+    <meta property="og:site_name" content="P3 Protocol" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://p3protocol.com/" />
+    <meta name="twitter:title" content="P3 Protocol - Web3 Mesh Operating System" />
+    <meta name="twitter:description" content="Voice-first Atlas substrate with end-to-end encryption, blockchain anchoring, and 100+ app integrations" />
+    <meta name="twitter:image" content="https://p3protocol.com/icons/atlas-512.svg" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "P3 Protocol",
+      "alternateName": "Atlas",
+      "description": "Web3 Mesh Operating System with voice-first interface, end-to-end encryption, and blockchain anchoring",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "P3 Protocol",
+        "url": "https://p3protocol.com"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "1"
+      }
+    }
+    </script>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://api.p3protocol.io" />
+    <link rel="dns-prefetch" href="https://api.p3protocol.io" />
+    <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <title>P3 Protocol - Web3 Mesh Operating System | Atlas Substrate</title>
+    <script>window.__P3_HTML_VERSION = 'v20251213-build143600';
+    (function(){
+      var v = 'v20251213-build143600';
+      var ua = navigator.userAgent;
+      var isWallet = /Base|Trust|MetaMask|Coinbase|Rainbow/i.test(ua);
+      console.log('%c[STARTUP] ' + v + ' | Wallet Browser: ' + isWallet, 'background:#0a0;color:#fff;padding:2px 6px;');
+      fetch('/api/diag', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          level: 'info',
+          tag: 'STARTUP',
+          message: 'App loaded: ' + v,
+          data: {
+            version: v,
+            isWalletBrowser: isWallet,
+            userAgent: ua.slice(0, 200),
+            url: location.href.slice(0, 200),
+            hasEthereum: !!window.ethereum
+          }
+        })
+      }).catch(function(){});
+    })();
+    </script>
+    <script src="/bootstrap.js?v=siwe5" defer></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx?v=siwe5"></script>
+  </body>
+</html>

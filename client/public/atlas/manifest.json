@@ -1,0 +1,94 @@
+{
+  "name": "P3 Atlas",
+  "short_name": "Atlas",
+  "description": "Voice-first Web3 Mesh Operating System - Control apps, send messages, and navigate the P3 substrate with voice commands",
+  "start_url": "/atlas",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/atlas-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/atlas-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/atlas-maskable.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Go to Inbox",
+      "short_name": "Inbox",
+      "description": "View your message inbox",
+      "url": "/atlas?mode=inbox",
+      "icons": [{ "src": "/icons/atlas-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Compose Message",
+      "short_name": "Compose",
+      "description": "Write a new message",
+      "url": "/atlas?mode=messages&action=compose",
+      "icons": [{ "src": "/icons/atlas-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Open Channels",
+      "short_name": "Channels",
+      "description": "Browse TV channels",
+      "url": "/atlas?mode=tv",
+      "icons": [{ "src": "/icons/atlas-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Open Radio",
+      "short_name": "Radio",
+      "description": "Listen to radio stations",
+      "url": "/atlas?mode=radio",
+      "icons": [{ "src": "/icons/atlas-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Open eReader",
+      "short_name": "Books",
+      "description": "Read eBooks",
+      "url": "/atlas?mode=reader",
+      "icons": [{ "src": "/icons/atlas-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Open Browser",
+      "short_name": "Browser",
+      "description": "Browse the web",
+      "url": "/atlas?mode=webBrowser",
+      "icons": [{ "src": "/icons/atlas-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Send Payment",
+      "short_name": "Pay",
+      "description": "Send crypto payment",
+      "url": "/atlas?mode=payments",
+      "icons": [{ "src": "/icons/atlas-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Open News",
+      "short_name": "News",
+      "description": "Latest headlines",
+      "url": "/atlas?mode=news",
+      "icons": [{ "src": "/icons/atlas-192.svg", "sizes": "192x192" }]
+    }
+  ],
+  "categories": ["productivity", "utilities", "personalization"],
+  "screenshots": [],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "scope": "/atlas",
+  "id": "p3-atlas"
+}

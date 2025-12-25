@@ -1,0 +1,42 @@
+// Atlas API 2.0 - AccessFrame Protocol Buffer Schema
+// Binary frames for efficient access manifest transport
+
+syntax = "proto3";
+
+package atlas.v2;
+
+// AccessMode defines how content can be accessed
+enum AccessMode {
+  ACCESS_MODE_UNKNOWN = 0;
+  ACCESS_MODE_URI = 1;      // Direct URI access (file download, stream)
+  ACCESS_MODE_EMBED = 2;    // Embeddable iframe/player
+  ACCESS_MODE_OPEN_WEB = 3; // External browser navigation
+}
+
+// Readiness indicates resolver/cache state
+enum Readiness {
+  READINESS_UNKNOWN = 0;
+  READINESS_PENDING = 1;  // Resolution in progress, fallback provided
+  READINESS_READY = 2;    // Full access resolved
+  READINESS_DEGRADED = 3; // Partial access, refresh recommended
+}
+
+// Capabilities describes media playback capabilities
+message Capabilities {
+  string codec = 1;      // e.g., "h264", "vp9", "av1"
+  uint32 segment_ms = 2; // Segment duration in milliseconds
+  bool cors = 3;         // CORS enabled for cross-origin access
+}
+
+// AccessFrame is the primary binary manifest for content access
+message AccessFrame {
+  string id = 1;                    // Unique frame identifier (UUID v4)
+  AccessMode mode = 2;              // Access mode
+  string uri = 3;                   // Direct URI (for URI/stream mode)
+  string embed = 4;                 // Embed URL (for iframe mode)
+  string open_web = 5;              // External URL (for browser nav)
+  Readiness readiness = 6;          // Resolver readiness state
+  uint32 ttl_ms = 7;                // Time-to-live in milliseconds
+  Capabilities capabilities = 8;   // Media capabilities
+  bytes signature = 9;              // Server signature for integrity
+}

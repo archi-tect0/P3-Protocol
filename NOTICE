@@ -1,0 +1,219 @@
+P3 Protocol
+Copyright 2024-2025 Jasyn Allois
+
+This product includes software developed by Jasyn Allois and contributors.
+
+Licensed under the Apache License, Version 2.0.
+
+================================================================================
+THIRD-PARTY NOTICES
+================================================================================
+
+This project incorporates components from the projects listed below. The original
+copyright notices and licenses are set forth below.
+
+--------------------------------------------------------------------------------
+React (MIT License)
+Copyright (c) Meta Platforms, Inc. and affiliates.
+https://github.com/facebook/react
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Vite (MIT License)
+Copyright (c) 2019-present Evan You & Vite Contributors
+https://github.com/vitejs/vite
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Express (MIT License)
+Copyright (c) 2009-2014 TJ Holowaychuk
+Copyright (c) 2013-2014 Roman Shtylman
+Copyright (c) 2014-2015 Douglas Christopher Wilson
+https://github.com/expressjs/express
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Drizzle ORM (Apache 2.0 License)
+Copyright (c) 2022-present Drizzle Team
+https://github.com/drizzle-team/drizzle-orm
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+TweetNaCl.js (Public Domain / Unlicense)
+https://github.com/nicejsjs/tweetnacl-js
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+WalletConnect (Apache 2.0 License)
+Copyright (c) 2018-present WalletConnect, Inc.
+https://github.com/WalletConnect/walletconnect-monorepo
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Ethers.js (MIT License)
+Copyright (c) 2016-present Richard Moore
+https://github.com/ethers-io/ethers.js
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Hardhat (MIT License)
+Copyright (c) 2019-present Nomic Foundation
+https://github.com/NomicFoundation/hardhat
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+OpenZeppelin Contracts (MIT License)
+Copyright (c) 2016-present OpenZeppelin
+https://github.com/OpenZeppelin/openzeppelin-contracts
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Socket.io (MIT License)
+Copyright (c) 2014-present Automattic
+https://github.com/socketio/socket.io
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Redis/ioredis (MIT License)
+Copyright (c) 2015-present Zihua Li
+https://github.com/redis/ioredis
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+TanStack Query (MIT License)
+Copyright (c) 2021-present Tanner Linsley
+https://github.com/TanStack/query
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Tailwind CSS (MIT License)
+Copyright (c) Tailwind Labs, Inc.
+https://github.com/tailwindlabs/tailwindcss
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+shadcn/ui (MIT License)
+Copyright (c) 2023 shadcn
+https://github.com/shadcn-ui/ui
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Radix UI (MIT License)
+Copyright (c) 2022 WorkOS
+https://github.com/radix-ui/primitives
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Lucide Icons (ISC License)
+Copyright (c) 2020 Lucide Contributors
+https://github.com/lucide-icons/lucide
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Zod (MIT License)
+Copyright (c) 2020 Colin McDonnell
+https://github.com/colinhacks/zod
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+BullMQ (MIT License)
+Copyright (c) 2019-present Taskforce.sh Inc.
+https://github.com/taskforcesh/bullmq
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Wouter (ISC License)
+Copyright (c) 2019-present Alexey Taktarov
+https://github.com/molefrog/wouter
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Chart.js (MIT License)
+Copyright (c) 2014-present Chart.js Contributors
+https://github.com/chartjs/Chart.js
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Framer Motion (MIT License)
+Copyright (c) 2018 Framer B.V.
+https://github.com/framer/motion
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+date-fns (MIT License)
+Copyright (c) 2021 Sasha Koss and Lesha Koss
+https://github.com/date-fns/date-fns
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+wagmi (MIT License)
+Copyright (c) 2022-present weth, LLC
+https://github.com/wevm/wagmi
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+viem (MIT License)
+Copyright (c) 2023-present weth, LLC
+https://github.com/wevm/viem
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Reown AppKit / WalletConnect (Apache 2.0 License)
+Copyright (c) 2018-present WalletConnect, Inc.
+https://github.com/WalletConnect/walletconnect-monorepo
+https://github.com/reown-com/appkit
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+@noble/hashes (MIT License)
+Copyright (c) 2022 Paul Miller
+https://github.com/paulmillr/noble-hashes
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+jose (MIT License)
+Copyright (c) 2018 Filip Skokan
+https://github.com/panva/jose
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+jsonwebtoken (MIT License)
+Copyright (c) 2015 Auth0, Inc.
+https://github.com/auth0/node-jsonwebtoken
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+bcrypt (MIT License)
+Copyright (c) 2010-present Nicholas Campbell
+https://github.com/kelektiv/node.bcrypt.js
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+CONTENT SOURCES
+--------------------------------------------------------------------------------
+
+This project includes automated catalog sync from the following open data sources:
+
+- IPTV-org (Public domain IPTV playlist aggregator)
+  https://github.com/iptv-org/iptv
+
+- Project Gutenberg (Public domain ebooks)
+  https://www.gutenberg.org
+
+- Open Food Facts (Open Database License)
+  https://world.openfoodfacts.org
+
+- FreeToGame (Free-to-play game catalog)
+  https://www.freetogame.com
+
+- GamerPower (Gaming giveaways)
+  https://www.gamerpower.com
+
+================================================================================
+
+For the full text of each license, please refer to the respective project
+repositories or the LICENSE files included with each dependency.
+
+All trademarks and registered trademarks mentioned in this software are the
+property of their respective owners.

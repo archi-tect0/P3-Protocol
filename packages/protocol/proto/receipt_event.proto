@@ -1,0 +1,28 @@
+// Atlas API 2.0 - ReceiptEvent Protocol Buffer Schema
+// Binary frames for user engagement receipts
+
+syntax = "proto3";
+
+package atlas.v2;
+
+// Action represents user engagement actions
+enum Action {
+  ACTION_UNKNOWN = 0;
+  ACTION_PLAY = 1;    // Started media playback
+  ACTION_READ = 2;    // Started reading content
+  ACTION_WATCH = 3;   // Watched video content
+  ACTION_BUY = 4;     // Initiated purchase
+  ACTION_LISTEN = 5;  // Listened to audio
+  ACTION_VOTE = 6;    // Cast governance vote
+  ACTION_BROWSE = 7;  // Browsed/viewed item details
+}
+
+// ReceiptEvent captures user engagement for receipts
+message ReceiptEvent {
+  string session_id = 1;          // Client session identifier
+  string item_id = 2;             // Content item identifier
+  Action action = 3;              // User action type
+  uint64 ts = 4;                  // Timestamp (Unix ms)
+  bytes client_sig = 5;           // Client signature (optional)
+  map<string, string> meta = 6;   // Additional metadata
+}

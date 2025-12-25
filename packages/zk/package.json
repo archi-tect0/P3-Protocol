@@ -1,0 +1,40 @@
+{
+  "name": "@p3/zk",
+  "version": "1.0.0",
+  "description": "Zero-knowledge circuits and prover for P3 Protocol",
+  "main": "prover/index.ts",
+  "scripts": {
+    "compile": "npm run compile:message && npm run compile:meeting && npm run compile:payment && npm run compile:consent",
+    "compile:message": "circom circuits/MessageReceipt.circom --r1cs --wasm --sym -o build/",
+    "compile:meeting": "circom circuits/MeetingReceipt.circom --r1cs --wasm --sym -o build/",
+    "compile:payment": "circom circuits/PaymentReceipt.circom --r1cs --wasm --sym -o build/",
+    "compile:consent": "circom circuits/ConsentState.circom --r1cs --wasm --sym -o build/",
+    "keygen": "npm run keygen:message && npm run keygen:meeting && npm run keygen:payment && npm run keygen:consent",
+    "keygen:message": "npm run powers:message && npm run zkey:message && npm run vkey:message",
+    "keygen:meeting": "npm run powers:meeting && npm run zkey:meeting && npm run vkey:meeting",
+    "keygen:payment": "npm run powers:payment && npm run zkey:payment && npm run vkey:payment",
+    "keygen:consent": "npm run powers:consent && npm run zkey:consent && npm run vkey:consent",
+    "powers:message": "snarkjs powersoftau new bn128 14 build/pot14_0000.ptau -v && snarkjs powersoftau contribute build/pot14_0000.ptau build/pot14_0001.ptau --name='First contribution' -v -e='random entropy' && snarkjs powersoftau prepare phase2 build/pot14_0001.ptau build/pot14_final.ptau -v",
+    "powers:meeting": "echo 'Using existing powers of tau'",
+    "powers:payment": "echo 'Using existing powers of tau'",
+    "powers:consent": "echo 'Using existing powers of tau'",
+    "zkey:message": "snarkjs groth16 setup build/MessageReceipt.r1cs build/pot14_final.ptau build/MessageReceipt_0000.zkey && snarkjs zkey contribute build/MessageReceipt_0000.zkey build/MessageReceipt_final.zkey --name='1st Contributor' -v -e='random entropy'",
+    "zkey:meeting": "snarkjs groth16 setup build/MeetingReceipt.r1cs build/pot14_final.ptau build/MeetingReceipt_0000.zkey && snarkjs zkey contribute build/MeetingReceipt_0000.zkey build/MeetingReceipt_final.zkey --name='1st Contributor' -v -e='random entropy'",
+    "zkey:payment": "snarkjs groth16 setup build/PaymentReceipt.r1cs build/pot14_final.ptau build/PaymentReceipt_0000.zkey && snarkjs zkey contribute build/PaymentReceipt_0000.zkey build/PaymentReceipt_final.zkey --name='1st Contributor' -v -e='random entropy'",
+    "zkey:consent": "snarkjs groth16 setup build/ConsentState.r1cs build/pot14_final.ptau build/ConsentState_0000.zkey && snarkjs zkey contribute build/ConsentState_0000.zkey build/ConsentState_final.zkey --name='1st Contributor' -v -e='random entropy'",
+    "vkey:message": "snarkjs zkey export verificationkey build/MessageReceipt_final.zkey build/MessageReceipt_verification_key.json",
+    "vkey:meeting": "snarkjs zkey export verificationkey build/MeetingReceipt_final.zkey build/MeetingReceipt_verification_key.json",
+    "vkey:payment": "snarkjs zkey export verificationkey build/PaymentReceipt_final.zkey build/PaymentReceipt_verification_key.json",
+    "vkey:consent": "snarkjs zkey export verificationkey build/ConsentState_final.zkey build/ConsentState_verification_key.json",
+    "build": "npm run compile && npm run keygen",
+    "test": "echo 'No tests yet'"
+  },
+  "keywords": ["zk", "circom", "snarkjs", "privacy", "zero-knowledge"],
+  "author": "P3 Protocol",
+  "license": "MIT",
+  "dependencies": {
+    "circomlib": "^2.0.5",
+    "snarkjs": "^0.7.6",
+    "ffjavascript": "^0.3.0"
+  }
+}

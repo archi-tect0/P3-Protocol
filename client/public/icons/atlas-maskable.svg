@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="atlasGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="atlasGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1b4b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background for maskable -->
+  <rect width="512" height="512" fill="url(#bgGradient)"/>
+  
+  <!-- Outer swirling arcs -->
+  <g>
+    <path d="M150 195 Q105 145 155 110 Q205 75 256 105" 
+          stroke="url(#atlasGradient)" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <path d="M362 195 Q407 145 357 110 Q307 75 256 105" 
+          stroke="url(#atlasGradient)" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <path d="M150 317 Q105 367 155 402 Q205 437 256 407" 
+          stroke="url(#atlasGradient)" stroke-width="20" stroke-linecap="round" fill="none"/>
+    <path d="M362 317 Q407 367 357 402 Q307 437 256 407" 
+          stroke="url(#atlasGradient)" stroke-width="20" stroke-linecap="round" fill="none"/>
+  </g>
+  
+  <!-- Infinity symbol -->
+  <path d="M256 256 
+           C256 226 226 200 192 200 
+           C158 200 132 226 132 256 
+           C132 286 158 312 192 312 
+           C226 312 256 286 256 256 
+           C256 226 286 200 320 200 
+           C354 200 380 226 380 256 
+           C380 286 354 312 320 312 
+           C286 312 256 286 256 256Z" 
+        stroke="url(#atlasGlow)" stroke-width="24" stroke-linecap="round" fill="none"/>
+</svg>

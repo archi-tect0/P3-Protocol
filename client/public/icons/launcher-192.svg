@@ -1,0 +1,46 @@
+<svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rocketGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="50%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="192" height="192" rx="24" fill="#0a0a12"/>
+  
+  <g transform="translate(96, 96) rotate(-45)">
+    <path d="M0 -50 Q30 -40 40 0 Q30 40 0 50 Q-30 40 -40 0 Q-30 -40 0 -50" fill="url(#rocketGrad)"/>
+    
+    <ellipse cx="0" cy="-15" rx="12" ry="15" fill="url(#glassGrad)" filter="url(#glow2)"/>
+    <ellipse cx="-4" cy="-18" rx="3" ry="4" fill="#fff" opacity="0.8"/>
+    
+    <path d="M-25 25 L-35 45 L-20 35 Z" fill="url(#rocketGrad)"/>
+    <path d="M25 25 L35 45 L20 35 Z" fill="url(#rocketGrad)"/>
+    <path d="M0 45 L-10 55 L0 50 L10 55 Z" fill="url(#rocketGrad)"/>
+    
+    <g filter="url(#glow2)">
+      <path d="M-15 55 Q0 80 15 55 Q0 70 -15 55" fill="url(#flameGrad)"/>
+      <path d="M-10 60 Q0 85 10 60 Q0 75 -10 60" fill="#fbbf24"/>
+    </g>
+    
+    <circle cx="-15" cy="10" r="4" fill="#0891b2"/>
+    <circle cx="15" cy="10" r="4" fill="#0891b2"/>
+  </g>
+</svg>

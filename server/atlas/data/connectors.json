@@ -1,0 +1,107 @@
+[
+  {
+    "id": "gmail",
+    "title": "Gmail",
+    "icon": "mail",
+    "oauth": {
+      "authUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "tokenUrl": "https://oauth2.googleapis.com/token",
+      "scopes": [
+        "https://www.googleapis.com/auth/gmail.readonly",
+        "https://www.googleapis.com/auth/gmail.send"
+      ],
+      "redirectUri": "/api/connector/callback/gmail"
+    },
+    "verbs": [
+      { "intent": "messages.list", "endpoint": "/connector/gmail/messages", "visual": "list.table" },
+      { "intent": "messages.send", "endpoint": "/connector/gmail/send", "visual": "receipt" }
+    ],
+    "consent": { "anchorWrites": true, "anchorReads": false },
+    "renderHints": { "palette": "warm", "density": "comfortable" }
+  },
+  {
+    "id": "reddit",
+    "title": "Reddit",
+    "icon": "message-circle",
+    "oauth": {
+      "authUrl": "https://www.reddit.com/api/v1/authorize",
+      "tokenUrl": "https://www.reddit.com/api/v1/access_token",
+      "scopes": ["read", "submit", "privatemessages"],
+      "redirectUri": "/api/connector/callback/reddit"
+    },
+    "verbs": [
+      { "intent": "inbox.list", "endpoint": "/connector/reddit/inbox", "visual": "list.table" },
+      { "intent": "post.submit", "endpoint": "/connector/reddit/submit", "visual": "receipt" }
+    ],
+    "consent": { "anchorWrites": true, "anchorReads": false },
+    "renderHints": { "palette": "cool", "density": "comfortable" }
+  },
+  {
+    "id": "drive",
+    "title": "Google Drive",
+    "icon": "folder",
+    "oauth": {
+      "authUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "tokenUrl": "https://oauth2.googleapis.com/token",
+      "scopes": ["https://www.googleapis.com/auth/drive.file"],
+      "redirectUri": "/api/connector/callback/drive"
+    },
+    "verbs": [
+      { "intent": "files.list", "endpoint": "/connector/drive/files", "visual": "grid.cards" },
+      { "intent": "files.upload", "endpoint": "/connector/drive/upload", "visual": "receipt" }
+    ],
+    "consent": { "anchorWrites": true, "anchorReads": false },
+    "renderHints": { "palette": "cool", "density": "comfortable" }
+  },
+  {
+    "id": "discord",
+    "title": "Discord",
+    "icon": "message-square",
+    "oauth": {
+      "authUrl": "https://discord.com/api/oauth2/authorize",
+      "tokenUrl": "https://discord.com/api/oauth2/token",
+      "scopes": ["identify", "guilds", "messages.read"],
+      "redirectUri": "/api/connector/callback/discord"
+    },
+    "verbs": [
+      { "intent": "servers.list", "endpoint": "/connector/discord/servers", "visual": "list.cards" },
+      { "intent": "messages.send", "endpoint": "/connector/discord/send", "visual": "receipt" }
+    ],
+    "consent": { "anchorWrites": true, "anchorReads": false },
+    "renderHints": { "palette": "cool", "density": "compact" }
+  },
+  {
+    "id": "stripe",
+    "title": "Stripe",
+    "icon": "credit-card",
+    "oauth": {
+      "authUrl": "https://connect.stripe.com/oauth/authorize",
+      "tokenUrl": "https://connect.stripe.com/oauth/token",
+      "scopes": ["read_write"],
+      "redirectUri": "/api/connector/callback/stripe"
+    },
+    "verbs": [
+      { "intent": "payments.list", "endpoint": "/connector/stripe/payments", "visual": "list.table" },
+      { "intent": "payouts.list", "endpoint": "/connector/stripe/payouts", "visual": "list.table" }
+    ],
+    "consent": { "anchorWrites": true, "anchorReads": true },
+    "renderHints": { "palette": "warm", "density": "comfortable" }
+  },
+  {
+    "id": "calendar",
+    "title": "Google Calendar",
+    "icon": "calendar",
+    "oauth": {
+      "authUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "tokenUrl": "https://oauth2.googleapis.com/token",
+      "scopes": ["https://www.googleapis.com/auth/calendar.readonly"],
+      "redirectUri": "/api/connector/callback/calendar"
+    },
+    "verbs": [
+      { "intent": "events.list", "endpoint": "/connector/calendar/events", "visual": "list.timeline" },
+      { "intent": "events.create", "endpoint": "/connector/calendar/create", "visual": "receipt" }
+    ],
+    "consent": { "anchorWrites": true, "anchorReads": false },
+    "renderHints": { "palette": "cool", "density": "comfortable" }
+  }
+]

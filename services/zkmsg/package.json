@@ -1,0 +1,13 @@
+{
+  "name": "zkmsg",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.4.0",
+    "snarkjs": "^0.7.1",
+    "semaphore-protocol": "^3.2.0"
+  }
+}
