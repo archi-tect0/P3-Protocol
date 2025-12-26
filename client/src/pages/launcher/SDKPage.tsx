@@ -1605,13 +1605,14 @@ export default function SDKPage() {
           {/* Quick Start Buttons */}
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             <a
-              href="/api/sdk/download"
-              download="p3-protocol-sdk.zip"
-              data-testid="button-download-starter"
+              href="https://github.com/archi-tect0/P3-Protocol"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="button-github-repo"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-6 py-3 rounded-lg font-medium transition-all"
             >
-              <Download className="w-4 h-4" />
-              Download Starter Kit
+              <ExternalLink className="w-4 h-4" />
+              View on GitHub
             </a>
             <a
               href="#api-reference"
@@ -3450,13 +3451,14 @@ export default function SDKPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="/api/sdk/download"
-                  download="p3-protocol-sdk.zip"
-                  data-testid="button-download-sdk"
+                  href="https://github.com/archi-tect0/P3-Protocol"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-github-sdk"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white border-0 px-8 py-4 text-lg rounded-md font-medium transition-all"
                 >
-                  <Download className="w-5 h-5" />
-                  Download SDK
+                  <ExternalLink className="w-5 h-5" />
+                  View on GitHub
                 </a>
                 <Button
                   data-testid="button-explore-hub"
