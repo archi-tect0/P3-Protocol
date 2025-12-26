@@ -89,56 +89,20 @@ See [packages/sdk/README.md](./packages/sdk/README.md) for full documentation.
 
 ---
 
-## AI-Powered Customization Playbook
+## AI-Powered Development
 
-P3 is built for the AI-assisted development era. Modular architecture, clean abstractions, and documented seams make it ideal for Cursor, Copilot, or Claude-driven workflows.
+P3 is built for the AI-assisted development era. Use Cursor, Copilot, or Claude to customize the entire stack.
 
-### Install in Minutes
+**[AI Development Guide](./docs/AI_DEVELOPMENT_GUIDE.md)** - Complete playbook for AI-assisted customization:
+- Code manipulation patterns and key abstractions
+- Mesh network topology alterations
+- Atlas Transport lane customization (8-lane system)
+- Node configuration for different app types (CDN, enterprise, IoT, gaming)
+- Atlas as a white-label shell (30+ swappable modes)
+- Forward-looking blueprints (sovereign media, DAO command center, disaster response)
+- Ready-to-use AI prompt recipes
 
-**Full Stack** (recommended for new projects)
-```bash
-git clone https://github.com/archi-tect0/P3-Protocol.git && cd P3-Protocol && npm install && npm run dev
-```
-
-**SDK Only** (add to existing app)
-```bash
-npm install @p3/protocol
-```
-
-**Module Extraction** (cherry-pick components)
-```bash
-# Copy just what you need
-cp -r P3-Protocol/server/services/sessionBridge.ts your-project/
-cp -r P3-Protocol/client/src/lib/crypto.ts your-project/
-```
-
-> **AI Tip:** Paste the output of `tree -L 2` into your AI assistant for instant codebase orientation.
-
-### Remix with AI
-
-| Surface | Files | Example Prompt |
-|---------|-------|----------------|
-| **Transport Lanes** | `server/atlas/transport.ts` | *"Rename Lane 4 to 'Medical Telemetry' with priority weight 90 and add rate limiting for HIPAA compliance."* |
-| **UI Shell** | `client/src/components/atlas/` | *"Replace the Atlas Canvas with a minimal dashboard. Keep Session Bridge and Nexus messaging intact."* |
-| **Settlement Layer** | `server/services/receiptAnchor.ts` | *"Swap Base Network anchoring for Solana using Anchor framework. Preserve the receipt hash format."* |
-| **Session Bridge** | `server/services/sessionBridge.ts` | *"Add Passkey/WebAuthn as a fallback authentication method alongside wallet signatures."* |
-| **Encryption** | `client/src/lib/crypto.ts` | *"Upgrade from X25519 to the Kyber hybrid envelope defined in `rust/pqcrypto/`."* |
-
-See [MODULAR_SEAMS.md](./docs/MODULAR_SEAMS.md) for extraction patterns.
-
-### New Frontiers
-
-**Ideas to build on P3:**
-
-| Concept | Description | Key Components |
-|---------|-------------|----------------|
-| **Sovereign Media Mesh** | Community-owned streaming where viewers are the CDN | Atlas Transport, Mesh Network, Receipt Anchoring |
-| **On-Prem Compliance Mesh** | Air-gapped enterprise network with audit trails | Session Bridge, PQ Crypto, Blockchain Anchoring |
-| **Disaster Response Comms** | Offline-first encrypted messaging for first responders | Nexus Messaging, WebRTC, Local-first sync |
-| **DAO Command Center** | Token-gated workspace with on-chain governance | ZK Circuits, Session Bridge, Task Manager |
-| **Creator Paywall Network** | Micro-payments for content with zero platform fees | Receipt Anchoring, Cross-Chain Bridge, Atlas Transport |
-
-> **Starter Prompt:** *"I want to build [concept]. Using P3 Protocol's `server/` and `client/` structure, scaffold the core features. Reference `docs/INTEGRATION_GUIDE.md` for component patterns."*
+> **Quick Start:** Paste `tree -L 2` output into your AI assistant, then ask it to help you build on P3.
 
 ---
 
@@ -206,6 +170,7 @@ P3-Protocol/
 ## Documentation
 
 ### Getting Started
+- **[AI Development Guide](./docs/AI_DEVELOPMENT_GUIDE.md)** - AI-assisted customization playbook
 - **[Integration Guide](./docs/INTEGRATION_GUIDE.md)** - Modular component adoption
 - **[Platform Overview](./docs/PLATFORM_OVERVIEW.md)** - Complete system introduction
 - **[Environment Setup](./docs/ENV_SETUP.md)** - Configuration guide
