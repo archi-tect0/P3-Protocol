@@ -11,15 +11,14 @@
 
 ---
 
-## Overview
+## The P3 Protocol: Fixed Web3 for Everyone
 
-P3 Protocol is production-ready infrastructure for decentralized applications. Connect a wallet, become a node. No installation, no configuration—just participation.
+P3 is a **White-Label Sovereign OS** that turns any browser into a high-performance mesh node. I built the infrastructure so you can focus on the application.
 
-**What makes it different:**
-- **Zero-config mesh entry** - Users become contributing nodes by visiting a URL
-- **Blind packet neutrality** - The network treats all data equally by design
-- **Self-healing streams** - Every viewer strengthens the network
-- **Modular by default** - Use individual components or deploy the full stack
+- **Zero-Install Mesh** - No Docker, no CLI, no hardware. Your users *are* the network just by opening a URL.
+- **8-Lane Atlas Transport** - Proprietary-grade multiplexing that prevents bulk data (media) from blocking critical signals (security/auth).
+- **Post-Quantum Ready** - Hybrid E2EE using TweetNaCl and Kyber-ready envelopes. Secured for the 2030s, today.
+- **Stuck-Free Architecture** - 100% modular. Gut the UI, rename the lanes, or swap the L1/L3 settlement layers in minutes.
 
 ---
 
@@ -87,6 +86,24 @@ await p3.receipts.anchor(receiptHash);
 ```
 
 See [packages/sdk/README.md](./packages/sdk/README.md) for full documentation.
+
+---
+
+## AI-First: Customizing P3 in Seconds
+
+P3 is designed to be **"Prompt-able."** Because the architecture is modular and the lanes are abstracted, you can use AI to refactor the entire protocol for your specific use case.
+
+**Quick-Start Prompts for your AI Assistant:**
+
+| Goal | Prompt |
+|------|--------|
+| **Rename the Lanes** | *"I'm using the P3 Atlas Transport. In `server/atlas/transport.ts`, help me re-label Lane 4 for 'Real-time Medical Telemetry' and set its priority weight to 90."* |
+| **Swap the UI Shell** | *"Analyze the `client/` folder. Keep the P3 Bridge and Messaging logic, but help me replace the Atlas UI with a minimalist Tailwind CSS dashboard for a private DAO."* |
+| **Add Features** | *"In the `server/services/` directory, help me implement a ZK-proof check for Lane 2 that ensures only users with a specific NFT can broadcast."* |
+| **Custom Settlement** | *"Replace the Base Network anchoring in `server/services/receiptAnchor.ts` with Solana settlement using Anchor framework."* |
+| **White-Label** | *"Rebrand P3 Protocol to 'MyNetwork' across all client components, keeping the core mesh infrastructure intact."* |
+
+The codebase is structured for AI-assisted development—modular seams, clear abstractions, and documented interfaces.
 
 ---
 
