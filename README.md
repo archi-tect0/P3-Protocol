@@ -56,8 +56,37 @@ P3 Protocol is a **composable toolkit**. Each system can be adopted independentl
 | **Real-Time** | WebSocket pub/sub, SSE, WebRTC | [REALTIME_INFRASTRUCTURE.md](./docs/REALTIME_INFRASTRUCTURE.md) |
 | **Receipt Anchoring** | Immutable blockchain audit trails | [CROSS_CHAIN_RECEIPTS.md](./docs/CROSS_CHAIN_RECEIPTS.md) |
 | **Mesh Network** | Distributed P2P content delivery | [MESH_NETWORK.md](./docs/MESH_NETWORK.md) |
+| **SDK** | One-click integration package | [packages/sdk/](./packages/sdk/README.md) |
 
 **[Full Integration Guide](./docs/INTEGRATION_GUIDE.md)** - Step-by-step instructions for adopting individual components.
+
+---
+
+## SDK Integration
+
+Add P3 Protocol to your existing application:
+
+```typescript
+import { createP3Client } from '@p3/protocol';
+
+// Initialize client
+const p3 = createP3Client({
+  relay: 'wss://relay.p3protocol.io',
+  usePQC: true,  // Post-quantum encryption
+  useZK: true,   // Zero-knowledge proofs
+});
+
+// Connect wallet
+await p3.connect();
+
+// Send encrypted message
+await p3.messaging.send(recipientPubkey, 'Hello, secure world!');
+
+// Anchor receipt to blockchain
+await p3.receipts.anchor(receiptHash);
+```
+
+See [packages/sdk/README.md](./packages/sdk/README.md) for full documentation.
 
 ---
 

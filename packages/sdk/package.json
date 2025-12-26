@@ -1,0 +1,54 @@
+{
+  "name": "@p3/protocol",
+  "version": "2.0.0",
+  "description": "P3 Protocol SDK - One-click integration for decentralized mesh applications",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./governance": {
+      "import": "./dist/governance.mjs",
+      "require": "./dist/governance.js",
+      "types": "./dist/governance.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup index.ts governance.ts --format cjs,esm --dts",
+    "dev": "tsup index.ts --watch",
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "p3",
+    "protocol",
+    "web3",
+    "mesh",
+    "decentralized",
+    "encryption",
+    "blockchain",
+    "wallet"
+  ],
+  "author": "P3 Protocol",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/archi-tect0/P3-Protocol.git"
+  },
+  "homepage": "https://github.com/archi-tect0/P3-Protocol#readme",
+  "peerDependencies": {
+    "ethers": "^6.0.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}
