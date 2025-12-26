@@ -63,11 +63,11 @@ P3 isn't a finished product—it's the factory. A production-ready template wher
 These are the high-value subsystems that solve hard problems:
 
 ### Session Bridge
-Atomic wallet-to-browser handoff with cross-device session continuity. Users connect once, stay connected across tabs, refreshes, and devices.
+Atomic wallet-to-browser handoff with cross-device session continuity. Users connect once, stay connected across tabs, refreshes, and devices. **[Full Documentation](./docs/SESSION_BRIDGE.md)**
 ```
 client/src/lib/sessionBridgeV2.ts  - Core bridge logic
 client/src/hooks/useSessionBridge.ts - React integration
-server/routes/pwa/*                 - Install token endpoints
+server/pwa-routes.ts                - Install token endpoints
 ```
 
 ### Atlas API v2 Transport
