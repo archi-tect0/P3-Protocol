@@ -345,8 +345,8 @@ export default function LandingPage() {
               <span className="text-xs text-slate-500 ml-2 font-mono">terminal</span>
             </div>
             <pre className="text-sm text-slate-300 font-mono overflow-x-auto">
-              <code>{`git clone https://github.com/archi-tect0/P3-Protocol/p3-protocol.git
-cd p3-protocol
+              <code>{`git clone https://github.com/archi-tect0/P3-Protocol.git
+cd P3-Protocol
 npm install
 cp .env.example .env
 npm run db:push
@@ -406,7 +406,7 @@ npm run dev`}</code>
 
           <div className="bg-slate-900 rounded-xl border border-white/10 p-5">
             <pre className="text-sm text-slate-300 font-mono overflow-x-auto">
-              <code>{`p3-protocol/
+              <code>{`P3-Protocol/
 ├── client/                 # React frontend
 │   ├── src/components/     # UI components
 │   ├── src/pages/          # Route pages
@@ -415,8 +415,13 @@ npm run dev`}</code>
 │   ├── atlas/              # Atlas API v2
 │   ├── routes.ts           # API endpoints
 │   └── storage.ts          # Database interface
-├── shared/schema.ts        # Drizzle schema
+├── packages/               # Modular components
+│   ├── zk/                 # Zero-knowledge circuits
+│   ├── protocol/           # Wire format schemas
+│   └── bridge/             # Cross-chain adapters
+├── rust/pqcrypto/          # Post-quantum crypto (WASM)
 ├── contracts/              # Solidity contracts
+├── shared/schema.ts        # Drizzle schema
 └── docs/                   # Documentation`}</code>
             </pre>
           </div>
