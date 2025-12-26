@@ -13,7 +13,7 @@ P3 Protocol is architected for the AI-assisted development era. This guide shows
 3. [Mesh Network Alterations](#mesh-network-alterations)
 4. [Atlas Transport Lane Customization](#atlas-transport-lane-customization)
 5. [Node Configuration by App Type](#node-configuration-by-app-type)
-6. [Atlas as a White-Label Shell](#atlas-as-a-white-label-shell)
+6. [The Three Shells](#the-three-shells)
 7. [Forward-Looking Blueprints](#forward-looking-blueprints)
 8. [AI Prompt Recipe Book](#ai-prompt-recipe-book)
 
@@ -282,89 +282,62 @@ Build multiplayer game infrastructure on P3:
 
 ---
 
-## Atlas as a White-Label Shell
+## The Three Shells
 
-### Canvas Architecture
+P3 Protocol provides three white-label application shells, each serving different purposes:
 
-Atlas Canvas is a modular application shell with 30+ modes:
+| Shell | Purpose | Documentation |
+|-------|---------|---------------|
+| **Atlas** | Multi-mode content canvas with 30+ modes, intent routing, and 8-lane transport | [ATLAS_SHELL.md](./ATLAS_SHELL.md) |
+| **Hub** | Wallet-anchored app launcher with 50+ apps, customizable dock, and password protection | [HUB_SHELL.md](./HUB_SHELL.md) |
+| **Nexus** | E2E encrypted messaging with voice/video calls and real-time presence | [NEXUS_SHELL.md](./NEXUS_SHELL.md) |
 
-```
-client/src/components/atlas/
-├── AtlasShell.tsx           # Main shell container
-├── modes/                   # Individual mode components
-│   ├── AIChatMode.tsx       # AI assistant
-│   ├── CallsMode.tsx        # Voice/video calls
-│   ├── GameDeckMode.tsx     # Gaming hub
-│   ├── HubMode.tsx          # App launcher
-│   ├── InboxMode.tsx        # Messaging
-│   ├── PulseMode.tsx        # Analytics dashboard
-│   ├── ReaderMode.tsx       # Ebook reader
-│   ├── TVMode.tsx           # Live TV streaming
-│   └── ... (30+ modes)
-├── AtlasTiles.tsx           # Mode registry & navigation
-└── PulseCard.tsx            # Status widgets
-```
+### Atlas Canvas
 
-### White-Label Prompts
+30+ modes organized by category: Media (TV, Radio, Reader, Games), Communication (Messages, Calls, AI Chat), Productivity (Hub, Calc, Camera), and System (Node, Pulse, Settings).
 
-**Minimal dashboard:**
-```
-Create a minimal version of Atlas:
+**Key features:**
+- Natural language intent routing (3-tier: regex → keywords → semantic LLM)
+- 8-lane transport preventing bulk data from blocking critical signals
+- Multi-agent mesh (Claude, GPT, Gemini, Weather, Web3)
 
-1. In client/src/components/atlas/AtlasTiles.tsx:
-   - Remove all modes except: HubMode, InboxMode, SettingsMode
-   - Update the mode registry to only include these three
+See [ATLAS_SHELL.md](./ATLAS_SHELL.md) for customization prompts.
 
-2. In client/src/components/atlas/AtlasShell.tsx:
-   - Simplify the navigation to a horizontal tab bar
-   - Remove the tile grid, use direct mode switching
+### P3 Hub
 
-3. Create a new theme in client/src/index.css:
-   - Minimal color palette (black, white, one accent)
-   - Clean sans-serif typography
-   - Remove all glassmorphism effects
-```
+Mobile-first app launcher with categories: Communication, Security, Payments, Media, Commerce, Governance, Tools, System.
 
-**Industry-specific shell:**
-```
-Rebrand Atlas for a healthcare application:
+**Key features:**
+- 5-slot customizable dock with long-press settings
+- Password protection with SHA-256 hashing
+- Background theming (gradient, image, IPFS)
+- Voice search integration
+- 85+ external apps (Gmail, Slack, Notion, Figma, etc.)
 
-1. In client/src/components/atlas/AtlasShell.tsx:
-   - Rename to "MedHub"
-   - Add HIPAA compliance banner
+See [HUB_SHELL.md](./HUB_SHELL.md) for customization prompts.
 
-2. Create new modes:
-   - PatientPortalMode.tsx (appointment scheduling)
-   - TelehealthMode.tsx (video consultations) 
-   - RecordsMode.tsx (medical records viewer)
+### Nexus Messaging
 
-3. Remove modes:
-   - TVMode, RadioMode, GameDeckMode, ReaderMode
+Zero-PII encrypted communications anchored to wallet identity.
 
-4. Update theming:
-   - Healthcare-appropriate color scheme (blues, whites)
-   - Accessibility-first design (WCAG AAA)
-```
+**Key features:**
+- E2E encryption (X25519 + XSalsa20-Poly1305)
+- WebRTC voice/video calls
+- Real-time presence
+- Cross-device session resume via Session Bridge
 
-**Add custom mode:**
-```
-Create a new Atlas mode for project management:
+See [NEXUS_SHELL.md](./NEXUS_SHELL.md) for customization prompts.
 
-1. Create client/src/components/atlas/modes/ProjectMode.tsx:
-   - Kanban board interface
-   - Task creation with wallet-signed assignments
-   - Timeline view with milestones
-   - Integration with existing InboxMode for notifications
+### Quick Shell Selection
 
-2. Register in client/src/components/atlas/AtlasTiles.tsx:
-   - Add to MODES array with icon and metadata
-   - Set category: 'productivity'
-
-3. Add backend in server/atlas/projects.ts:
-   - CRUD operations for projects and tasks
-   - Blockchain anchoring for milestone completion
-   - Notification hooks
-```
+| Use Case | Shell | Why |
+|----------|-------|-----|
+| Content platform | Atlas | Media modes, intent routing |
+| Corporate intranet | Hub | App organization, SSO-ready |
+| Secure communications | Nexus | E2E encryption, zero PII |
+| Healthcare portal | Atlas + Nexus | Telehealth + messaging |
+| Trading terminal | Atlas | Real-time data, custom lanes |
+| IoT dashboard | Hub | Device tiles, status monitoring |
 
 ---
 

@@ -175,6 +175,11 @@ P3-Protocol/
 - **[Platform Overview](./docs/PLATFORM_OVERVIEW.md)** - Complete system introduction
 - **[Environment Setup](./docs/ENV_SETUP.md)** - Configuration guide
 
+### Shell Customization
+- **[Atlas Shell](./docs/ATLAS_SHELL.md)** - 30+ mode content canvas with intent routing
+- **[Hub Shell](./docs/HUB_SHELL.md)** - App launcher with 50+ apps and customizable dock
+- **[Nexus Shell](./docs/NEXUS_SHELL.md)** - E2E encrypted messaging platform
+
 ### Core System Guides
 - **[Session Bridge](./docs/SESSION_BRIDGE.md)** - Wallet-to-browser handoff
 - **[Atlas Transport](./docs/ATLAS_TRANSPORT.md)** - Streaming and content delivery
