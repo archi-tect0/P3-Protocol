@@ -48,6 +48,8 @@ import type {
   InsertPaymentTransaction,
   WalletPin,
   InsertWalletPin,
+  PushSubscription,
+  InsertPushSubscription,
 } from "@shared/schema";
 import type {
   IStorage,
@@ -3548,5 +3550,46 @@ export class PgStorage implements IStorage {
     } catch (error: any) {
       console.error('[PgStorage] resetPinFailedAttempts error:', error);
     }
+  }
+
+  async createPushSubscription(data: InsertPushSubscription): Promise<PushSubscription> {
+    const [result] = await this.sql<PushSubscription[]>`
+      INSERT INTO push_subscriptions (wallet_address, endpoint, keys, topics)
+      VALUES (${data.walletAddress}, ${data.endpoint}, ${JSON.stringify(data.keys)}, ${data.topics || []})
+      ON CONFLICT (endpoint) DO UPDATE SET
+        wallet_address = EXCLUDED.wallet_address,
+        keys = EXCLUDED.keys,
+        topics = EXCLUDED.topics
+      RETURNING *
+    `;
+    return result;
+  }
+
+  async getPushSubscription(endpoint: string): Promise<PushSubscription | null> {
+    const [result] = await this.sql<PushSubscription[]>`
+      SELECT * FROM push_subscriptions WHERE endpoint = ${endpoint}
+    `;
+    return result || null;
+  }
+
+  async getPushSubscriptionsByWallet(walletAddress: string): Promise<PushSubscription[]> {
+    const results = await this.sql<PushSubscription[]>`
+      SELECT * FROM push_subscriptions WHERE LOWER(wallet_address) = LOWER(${walletAddress})
+    `;
+    return results;
+  }
+
+  async deletePushSubscription(endpoint: string): Promise<boolean> {
+    const result = await this.sql`
+      DELETE FROM push_subscriptions WHERE endpoint = ${endpoint}
+    `;
+    return result.count > 0;
+  }
+
+  async deletePushSubscriptionsByWallet(walletAddress: string): Promise<number> {
+    const result = await this.sql`
+      DELETE FROM push_subscriptions WHERE LOWER(wallet_address) = LOWER(${walletAddress})
+    `;
+    return result.count;
   }
 }
