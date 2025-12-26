@@ -55,6 +55,7 @@ P3 Protocol is a **composable toolkit**. Each system can be adopted independentl
 | **Real-Time** | WebSocket pub/sub, SSE, WebRTC | [REALTIME_INFRASTRUCTURE.md](./docs/REALTIME_INFRASTRUCTURE.md) |
 | **Receipt Anchoring** | Immutable blockchain audit trails | [CROSS_CHAIN_RECEIPTS.md](./docs/CROSS_CHAIN_RECEIPTS.md) |
 | **Mesh Network** | Distributed P2P content delivery | [MESH_NETWORK.md](./docs/MESH_NETWORK.md) |
+| **Device Extensions** | Roku, Alexa, and universal device access | [DEVICE_EXTENSIONS.md](./docs/DEVICE_EXTENSIONS.md) |
 | **SDK** | One-click integration package | [packages/sdk/](./packages/sdk/README.md) |
 
 **[Full Integration Guide](./docs/INTEGRATION_GUIDE.md)** - Step-by-step instructions for adopting individual components.
@@ -120,6 +121,9 @@ SHA-256 hashed receipts anchored to Base Network. Bridge adapters enable cross-c
 ### P3 Hub
 Wallet-anchored application launcher with 50+ apps. Session Bridge enables seamless wallet-to-browser handoff across MetaMask, Coinbase, Trust, Rainbow, and 100+ wallets.
 
+### Device Extensions
+Access Atlas from any screen. Production-ready Roku integration with QR pairing and PIN unlock, Alexa voice interface with wallet-linked preferences, plus a universal handshake protocol for building custom device clients (Xbox, picture frames, IoT displays).
+
 ### Also Included
 - **Multi-PWA Profiles** - Three installable configurations (Atlas, Launcher, Enterprise)
 - **LLM Orchestration** - OpenAI, Anthropic, and Gemini with automatic fallback
@@ -179,6 +183,7 @@ P3-Protocol/
 - **[Atlas Shell](./docs/ATLAS_SHELL.md)** - 30+ mode content canvas with intent routing
 - **[Hub Shell](./docs/HUB_SHELL.md)** - App launcher with 50+ apps and customizable dock
 - **[Nexus Shell](./docs/NEXUS_SHELL.md)** - E2E encrypted messaging platform
+- **[Device Extensions](./docs/DEVICE_EXTENSIONS.md)** - Roku, Alexa, and universal device access
 
 ### Core System Guides
 - **[Session Bridge](./docs/SESSION_BRIDGE.md)** - Wallet-to-browser handoff

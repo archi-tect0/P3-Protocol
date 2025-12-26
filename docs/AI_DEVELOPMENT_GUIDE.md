@@ -14,8 +14,9 @@ P3 Protocol is architected for the AI-assisted development era. This guide shows
 4. [Atlas Transport Lane Customization](#atlas-transport-lane-customization)
 5. [Node Configuration by App Type](#node-configuration-by-app-type)
 6. [The Three Shells](#the-three-shells)
-7. [Forward-Looking Blueprints](#forward-looking-blueprints)
-8. [AI Prompt Recipe Book](#ai-prompt-recipe-book)
+7. [Device Extension Prompts](#device-extension-prompts)
+8. [Forward-Looking Blueprints](#forward-looking-blueprints)
+9. [AI Prompt Recipe Book](#ai-prompt-recipe-book)
 
 ---
 
@@ -338,6 +339,171 @@ See [NEXUS_SHELL.md](./NEXUS_SHELL.md) for customization prompts.
 | Healthcare portal | Atlas + Nexus | Telehealth + messaging |
 | Trading terminal | Atlas | Real-time data, custom lanes |
 | IoT dashboard | Hub | Device tiles, status monitoring |
+| Smart TV | Roku API | QR pairing, wallet binding |
+| Voice assistant | Alexa API | Voice-first access |
+| Picture frame | Handshake | Minimal capability client |
+
+### Device Extensions
+
+P3 includes production-ready integrations for accessing Atlas from external devices:
+
+| Integration | Status | Documentation |
+|-------------|--------|---------------|
+| **Roku** | Production-ready | QR pairing, PIN unlock, TV commands |
+| **Alexa** | Production-ready | Voice interface, session tracking |
+| **Universal Handshake** | Production-ready | Any device with HTTP client |
+| Xbox, Silk, Picture Frames | Buildable | Use handshake as foundation |
+
+See [DEVICE_EXTENSIONS.md](./DEVICE_EXTENSIONS.md) for complete API reference.
+
+---
+
+## Device Extension Prompts
+
+### Build a Mesh Photo Frame
+
+Use the Roku pairing pattern for a dedicated photo display:
+
+```
+Build a mesh-connected photo frame using P3's pairing system:
+
+1. Create server/atlas/photoframe.ts (copy from roku.ts):
+   - Simplify to 4-digit pairing codes
+   - Add photo-specific commands: next, previous, slideshow
+   - Store album preferences per paired wallet
+
+2. Create client endpoint for frame:
+   - Minimal capability set: { iframe: true, hls: false }
+   - Poll for new photos from user's gallery
+   - Display QR for initial pairing
+
+3. Use Atlas GalleryMode.tsx as photo source:
+   - Sync wallet's photo library to frame
+   - Support shared family albums
+
+AI Prompt:
+"Using server/atlas/roku.ts as a template, create server/atlas/photoframe.ts 
+for a minimal photo frame device. Use 4-digit codes, add slideshow commands, 
+and sync photos from the user's GalleryMode library. The frame should poll 
+/api/atlas/photoframe/session/:id/photos to get the current album."
+```
+
+### Build an Alexa Skill for Atlas
+
+Expand voice capabilities:
+
+```
+Extend Alexa integration with custom skills:
+
+1. In server/atlas/routes/alexa.ts:
+   - Add intent for "open my messages"
+   - Add intent for "play music on {device}"
+   - Add intent for "check my payments"
+
+2. Create Alexa skill manifest:
+   - Define invocation: "Atlas"
+   - Map intents to P3 capabilities
+   - Configure account linking with wallet
+
+3. Add cross-platform handoff:
+   - "Continue on my phone" → trigger push notification
+   - "Show on TV" → use Roku pairing session
+
+AI Prompt:
+"Extend server/atlas/routes/alexa.ts to add these intents: 
+'open inbox' (reads unread message count), 'check balance' (reads wallet 
+token balances from TokensMode), 'play on roku' (triggers Roku session). 
+Include proper error handling and wallet authentication."
+```
+
+### Xbox/Windows App
+
+Build using PlayReady DRM:
+
+```
+Create Xbox-compatible Atlas client:
+
+1. Use universal handshake with Xbox capabilities:
+   - drm: { playready: true }
+   - codecs: { h264: true, h265: true }
+   - screen: { width: 3840, height: 2160 }
+
+2. Implement controller navigation:
+   - D-pad for tile selection
+   - A button for select, B for back
+   - Menu button for settings
+
+3. Focus on media modes:
+   - TVMode for live streaming
+   - GameDeckMode for game library
+   - AtlasOneMode for content browsing
+
+AI Prompt:
+"Create a handshake request in /v1/session/handshake for an Xbox client 
+with PlayReady DRM, H.265 codec support, and 4K resolution. Design a 
+controller-friendly navigation scheme for AtlasTiles.tsx that works 
+with gamepad input events."
+```
+
+### Smart Display / IoT Dashboard
+
+Minimal client for always-on displays:
+
+```
+Build IoT dashboard display:
+
+1. Create server/atlas/iot-display.ts:
+   - Copy pairing flow from roku.ts
+   - Add display-specific endpoints:
+     - /widgets - Get configured widgets
+     - /refresh - Force data refresh
+   - Support multiple widget types
+
+2. Widget types:
+   - Weather (from WeatherMode)
+   - Crypto prices (from TokensMode)
+   - Notifications (from InboxMode)
+   - Calendar (new widget)
+
+3. Minimal capability handshake:
+   - { iframe: true, screen: { width: 800, height: 480 } }
+   - JSON-only encoding for simplicity
+
+AI Prompt:
+"Create server/atlas/iot-display.ts with pairing like roku.ts but 
+optimized for small IoT displays. Add /widgets endpoint that returns 
+configured widget data (weather, crypto, notifications) based on 
+the paired wallet's preferences. Use a 30-second polling interval."
+```
+
+### Voice-Controlled Mesh App
+
+Build a custom voice assistant:
+
+```
+Create voice-controlled Atlas interface:
+
+1. Copy server/atlas/routes/alexa.ts → voice.ts
+   - Replace Alexa-specific logic with generic voice processing
+   - Add support for wake word detection
+   - Integrate with local speech-to-text
+
+2. Add Atlas-specific intents:
+   - "Navigate to {mode}" → switch Atlas modes
+   - "Send message to {contact}" → InboxMode compose
+   - "Show {query} on screen" → search and display
+
+3. Text-to-speech responses:
+   - Integrate with Google TTS (already in package.json)
+   - Cache common responses
+   - Stream long responses
+
+AI Prompt:
+"Create server/atlas/routes/voice.ts as a generic voice interface 
+for Atlas. Use the intent matching from alexa.ts but add support 
+for Atlas mode navigation ('open TV mode', 'show my messages'). 
+Return SSML-formatted speech responses for TTS processing."
+```
 
 ---
 
