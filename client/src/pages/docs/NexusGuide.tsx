@@ -226,7 +226,7 @@ class NexusCall {
     this.pc = new RTCPeerConnection({
       iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
-        { urls: 'turn:turn.p3protocol.io', username: 'p3', credential: '...' }
+        { urls: 'turn:turn.p3protocol.com', username: 'p3', credential: '...' }
       ]
     });
     

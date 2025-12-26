@@ -204,7 +204,7 @@ async function initProvider(): Promise<InstanceType<typeof EthereumProvider>> {
 
   await debugLog('init_provider_start', { projectId: PROJECT_ID });
 
-  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://p3protocol.io';
+  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://p3protocol.com';
   
   initPromise = EthereumProvider.init({
     projectId: PROJECT_ID,

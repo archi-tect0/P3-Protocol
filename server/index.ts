@@ -585,7 +585,7 @@ Response: { "token": "jwt_token", "expiresAt": 1700000000 }
 Apache 2.0 - Use freely, modify as needed.
 
 ## Support
-- Documentation: https://docs.p3protocol.io
+- Documentation: https://docs.p3protocol.com
 - API Reference: https://your-instance.com/launcher/sdk
 `;
 

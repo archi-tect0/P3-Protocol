@@ -489,7 +489,7 @@ export const appManifests: Record<string, AppManifest> = {
     title: 'Moderator Panel',
     category: 'governance',
     description: 'Wallet-gated moderation dashboard for the Hub.',
-    developer: { name: 'P3 Protocol', contact: 'https://t.me/P3Atlas', website: 'https://p3protocol.io' },
+    developer: { name: 'P3 Protocol', contact: 'https://t.me/P3Atlas', website: 'https://p3protocol.com' },
     permissions: ['wallet', 'notifications'],
     widgets: [],
     contextMenu: [],

@@ -9,7 +9,7 @@
  * 
  * // Initialize client
  * const p3 = createP3Client({
- *   relay: 'wss://relay.p3protocol.io',
+ *   relay: 'wss://relay.p3protocol.com',
  *   usePQC: true,
  *   useZK: true,
  * });
@@ -56,7 +56,7 @@ export interface P3Config {
 
 // Default configuration
 const DEFAULT_CONFIG: P3Config = {
-  relay: 'wss://relay.p3protocol.io',
+  relay: 'wss://relay.p3protocol.com',
   usePQC: false,
   useZK: true,
   chainId: 8453, // Base mainnet

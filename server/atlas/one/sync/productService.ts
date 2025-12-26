@@ -68,7 +68,7 @@ export async function syncOpenFoodFacts(options: {
     const url = `https://world.openfoodfacts.org/cgi/search.pl?action=process&tagtype_0=categories&tag_contains_0=contains&tag_0=${encodeURIComponent(category)}&page=${page}&page_size=${pageSize}&json=1`;
     
     const response = await fetch(url, {
-      headers: { 'User-Agent': 'AtlasOne/1.0 (contact@p3protocol.io)' }
+      headers: { 'User-Agent': 'AtlasOne/1.0 (contact@p3protocol.com)' }
     });
 
     if (!response.ok) {

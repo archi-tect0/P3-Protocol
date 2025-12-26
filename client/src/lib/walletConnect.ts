@@ -44,8 +44,8 @@ export async function getWalletConnectProvider(): Promise<InstanceType<typeof Et
     metadata: {
       name: 'P3 Protocol',
       description: 'Privacy-Preserving Proof of Communication',
-      url: typeof window !== 'undefined' ? window.location.origin : 'https://p3protocol.io',
-      icons: ['https://p3protocol.io/logo.png'],
+      url: typeof window !== 'undefined' ? window.location.origin : 'https://p3protocol.com',
+      icons: ['https://p3protocol.com/logo.png'],
     },
     qrModalOptions: {
       themeMode: 'dark',

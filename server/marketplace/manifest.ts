@@ -11,7 +11,7 @@ import { eq, and, desc } from 'drizzle-orm';
 
 export const manifestRouter = Router();
 
-const API_BASE_URL = process.env.API_BASE_URL || 'https://api.p3protocol.io';
+const API_BASE_URL = process.env.API_BASE_URL || 'https://api.p3protocol.com';
 
 // Default manifests for built-in marketplaces
 const defaultManifests = [

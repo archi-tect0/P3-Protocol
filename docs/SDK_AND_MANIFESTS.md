@@ -436,7 +436,7 @@ Full JSON schema for app manifests:
 
 ```json
 {
-  "$schema": "https://p3protocol.io/schemas/manifest-v1.json",
+  "$schema": "https://p3protocol.com/schemas/manifest-v1.json",
   "type": "object",
   "required": ["id", "title", "version", "category", "description", "developer", "permissions", "links"],
   "properties": {

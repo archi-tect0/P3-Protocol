@@ -15,7 +15,7 @@ import { createP3Client } from '@p3/protocol';
 
 // Initialize client
 const p3 = createP3Client({
-  relay: 'wss://relay.p3protocol.io',
+  relay: 'wss://relay.p3protocol.com',
   usePQC: true,
   useZK: true,
 });
