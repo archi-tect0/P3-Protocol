@@ -13,136 +13,17 @@
 
 ## Overview
 
-P3 Protocol is open-source infrastructure for an era that hasn't arrived yet. We're giving you the protocol, the encryption, and the network. What you build on top of it is up to you.
+P3 Protocol is production-ready infrastructure for decentralized applications. Connect a wallet, become a node. No installation, no configuration—just participation.
 
-Most decentralized networks require specialized browsers, cryptography expertise, or expensive hardware. P3 requires a click. The mesh logic integrates directly into the stack—a user becomes a contributing node just by visiting a URL. No installation. No configuration. Just participation.
-
-This is the first protocol that prioritizes the packet, not the provider. True net neutrality, hard-coded into the mesh. Multiplexed P2P routing with end-to-end encryption means the network is mathematically incapable of discriminating between a video stream and a private message. Both receive equal treatment.
-
-The architecture inverts the traditional CDN model. Instead of corporations spending billions to prevent buffering, P3 makes every viewer part of the solution. Users become micro-distributors. The network gets stronger and faster as more people join. No central bottlenecks. Self-healing by design.
-
-P3 isn't a finished product—it's the factory. A production-ready template where developers can plug in any service (streaming, messaging, finance, identity) without rebuilding the underlying security or networking. Grab individual components: the encryption stack, the real-time transport, the receipt anchoring, the mesh relay. Or deploy the entire operating system.
-
-*Build in five minutes what used to take five years. The definitive template for a neutral, decentralized future.*
-
-## Features
-
-### Atlas Canvas
-- **30+ Modes** - TV, radio, ebooks, games, weather, AI chat, and more
-- **Unified Interface** - Single canvas for all content types
-- **Open Sources** - IPTV aggregation, Project Gutenberg, free game catalogs
-
-### Nexus Messaging
-- **E2E Encryption** - TweetNaCl X25519 with post-quantum ready architecture
-- **Wallet Identity** - Zero PII design, wallet addresses as sole identifiers
-- **WebRTC Calls** - Peer-to-peer encrypted voice and video
-
-### Blockchain Anchoring
-- **Immutable Receipts** - SHA-256 hashed, blockchain-anchored audit trails
-- **Base Network** - Primary chain for smart contracts
-- **Cross-Chain Ready** - Bridge adapters for multi-chain settlement
-
-### P3 Hub
-- **50+ Apps** - Wallet-anchored application launcher
-- **Session Bridge** - Seamless wallet-to-browser handoff
-- **Multi-Wallet** - MetaMask, Coinbase, Trust, Rainbow, and 100+ more
-
-### Also Included
-
-- **Multi-PWA Profiles** - Three installable app configurations (Atlas, Launcher, Enterprise) with dedicated service workers. Users install directly from browser—zero-install mesh entry.
-- **LLM Orchestration** - Built-in router with OpenAI, Anthropic, and Gemini fallback. AI chat modes ready to use.
-- **NodeStream Visualization** - Real-time graph rendering for mesh network activity and data flows.
-- **Task Manager** - Production workflow automation through Nexus with encrypted task queues.
-- **Explorer & Marketplace** - Pre-built discovery interfaces for content, apps, and catalog items.
-- **Atlas UI Templates** - The entire Atlas interface is modular and modifiable. Use it as a starting point, swap modes, or build your own canvas.
-
----
-
-## Core Infrastructure
-
-These are the high-value subsystems that solve hard problems:
-
-### Session Bridge
-Atomic wallet-to-browser handoff with cross-device session continuity. Users connect once, stay connected across tabs, refreshes, and devices. **[Full Documentation](./docs/SESSION_BRIDGE.md)**
-```
-client/src/lib/sessionBridgeV2.ts  - Core bridge logic
-client/src/hooks/useSessionBridge.ts - React integration
-server/pwa-routes.ts                - Install token endpoints
-```
-
-### Atlas API v2 Transport
-8-lane multiplexed protocol with MessagePack encoding, adaptive compression, and session delta-sync. High-efficiency wire format for real-time applications.
-```
-server/protocol/transport.ts  - Transport layer
-server/protocol/encoding.ts   - MessagePack + compression
-server/protocol/wire.ts       - Wire protocol
-server/protocol/session/*     - Session management
-```
-
-### Post-Quantum Cryptography
-Kyber and Dilithium bindings ready for the post-quantum era. Rust-to-TypeScript bridge for quantum-safe key exchange and signatures.
-```
-rust/pqcrypto/          - Rust bindings
-packages/zk/            - TypeScript interop
-server/services/pq/     - Server-side PQ services
-```
-
-### Zero-Knowledge Circuits
-Pre-built ZK circuits for privacy-preserving proofs. Mesh reputation and message verification without revealing identity.
-```
-circuits/               - Circom circuits
-packages/zk/circuits/   - Compiled circuits
-packages/zk/prover/     - Proving services
-server/services/zkmsg/  - ZK message verification
-```
-
-### Viewport-Aware Prefetching
-Scroll-velocity-aware prefetching with IntersectionObserver, batch requests, and automatic cancellation. Netflix-grade content loading.
-```
-client/src/hooks/usePrefetchWindow.ts  - Prefetch engine
-server/atlas/one/*                      - Catalog batching
-```
-
----
-
-## Modular Architecture
-
-P3 Protocol is designed as a **composable toolkit**. Pick what you need:
-
-| Component | Use Case | Documentation |
-|-----------|----------|---------------|
-| **Session Bridge** | Wallet-to-browser handoff | [SESSION_BRIDGE.md](./docs/SESSION_BRIDGE.md) |
-| **ZK Circuits** | Privacy-preserving proofs | [packages/zk/README.md](./packages/zk/README.md) |
-| **PQ Crypto** | Post-quantum cryptography | [rust/pqcrypto/README.md](./rust/pqcrypto/README.md) |
-| **Cross-Chain Bridge** | Multi-chain receipt relay | [CROSS_CHAIN_BRIDGE.md](./docs/CROSS_CHAIN_BRIDGE.md) |
-| **Atlas Transport** | Streaming and content delivery | [ATLAS_TRANSPORT.md](./docs/ATLAS_TRANSPORT.md) |
-| **Cryptography** | E2E encryption for any app | [CRYPTOGRAPHY_PRIMITIVES.md](./docs/CRYPTOGRAPHY_PRIMITIVES.md) |
-| **Real-Time** | WebSocket, SSE, WebRTC | [REALTIME_INFRASTRUCTURE.md](./docs/REALTIME_INFRASTRUCTURE.md) |
-| **Receipt Anchoring** | Immutable audit trails | [CROSS_CHAIN_RECEIPTS.md](./docs/CROSS_CHAIN_RECEIPTS.md) |
-| **Mesh Network** | Distributed content delivery | [MESH_NETWORK.md](./docs/MESH_NETWORK.md) |
-| **Atlas Canvas** | Multi-mode UI framework | [ATLAS_CANVAS_STACK.md](./docs/ATLAS_CANVAS_STACK.md) |
-| **SDK & Manifests** | App/plugin system | [SDK_AND_MANIFESTS.md](./docs/SDK_AND_MANIFESTS.md) |
-| **Security** | Auth, encryption, key management | [SECURITY_ARCHITECTURE.md](./docs/SECURITY_ARCHITECTURE.md) |
-
-**[Full Integration Guide](./docs/INTEGRATION_GUIDE.md)** - Step-by-step instructions for adopting individual components.
-
----
-
-## Tech Stack
-
-**Frontend:** React, TypeScript, Vite, TanStack Query, shadcn/ui, Tailwind CSS
-
-**Backend:** Node.js, Express, TypeScript, PostgreSQL (Drizzle ORM), WebSocket
-
-**Blockchain:** Ethers.js v6, Hardhat, Base Network, IPFS via Pinata
-
-**Cryptography:** TweetNaCl (X25519, XSalsa20-Poly1305), SHA-256, SIWE
+**What makes it different:**
+- **Zero-config mesh entry** - Users become contributing nodes by visiting a URL
+- **Blind packet neutrality** - The network treats all data equally by design
+- **Self-healing streams** - Every viewer strengthens the network
+- **Modular by default** - Use individual components or deploy the full stack
 
 ---
 
 ## Quick Start
-
-### Full Stack Deployment
 
 ```bash
 # Clone the repository
@@ -158,22 +39,59 @@ npm run dev
 
 The application runs on `http://localhost:5000`.
 
-### Component Integration
+---
 
-Import individual modules into your existing project:
+## Core Systems
 
-```typescript
-// Encryption
-import { generateKeyPair, encrypt, decrypt } from './lib/crypto';
+P3 Protocol is a **composable toolkit**. Each system can be adopted independently:
 
-// Receipt anchoring
-import { createReceipt, anchorToChain } from './lib/receipts';
+| System | Description | Documentation |
+|--------|-------------|---------------|
+| **Session Bridge** | Wallet-to-browser handoff with cross-device continuity | [SESSION_BRIDGE.md](./docs/SESSION_BRIDGE.md) |
+| **ZK Circuits** | Privacy-preserving proofs for identity and reputation | [packages/zk/](./packages/zk/README.md) |
+| **PQ Crypto** | Post-quantum cryptography (Kyber, Dilithium) | [rust/pqcrypto/](./rust/pqcrypto/README.md) |
+| **Cross-Chain Bridge** | Multi-chain receipt relay (Polygon, Arbitrum, Optimism) | [CROSS_CHAIN_BRIDGE.md](./docs/CROSS_CHAIN_BRIDGE.md) |
+| **Atlas Transport** | Streaming, caching, and content delivery | [ATLAS_TRANSPORT.md](./docs/ATLAS_TRANSPORT.md) |
+| **Cryptography** | E2E encryption (TweetNaCl X25519, XSalsa20-Poly1305) | [CRYPTOGRAPHY_PRIMITIVES.md](./docs/CRYPTOGRAPHY_PRIMITIVES.md) |
+| **Real-Time** | WebSocket pub/sub, SSE, WebRTC | [REALTIME_INFRASTRUCTURE.md](./docs/REALTIME_INFRASTRUCTURE.md) |
+| **Receipt Anchoring** | Immutable blockchain audit trails | [CROSS_CHAIN_RECEIPTS.md](./docs/CROSS_CHAIN_RECEIPTS.md) |
+| **Mesh Network** | Distributed P2P content delivery | [MESH_NETWORK.md](./docs/MESH_NETWORK.md) |
 
-// WebSocket pub/sub
-import { createChannel, subscribe, publish } from './lib/realtime';
-```
+**[Full Integration Guide](./docs/INTEGRATION_GUIDE.md)** - Step-by-step instructions for adopting individual components.
 
-See [INTEGRATION_GUIDE.md](./docs/INTEGRATION_GUIDE.md) for detailed examples.
+---
+
+## What's Included
+
+### Atlas Canvas
+Multi-mode content interface with 30+ modes: TV, radio, ebooks, games, weather, AI chat. Built on open sources (IPTV aggregation, Project Gutenberg, free game catalogs).
+
+### Nexus Messaging
+End-to-end encrypted messaging with wallet identity. Zero PII design—wallet addresses are the only identifiers. Includes WebRTC for peer-to-peer voice and video.
+
+### Blockchain Anchoring
+SHA-256 hashed receipts anchored to Base Network. Bridge adapters enable cross-chain settlement to Polygon, Arbitrum, and Optimism.
+
+### P3 Hub
+Wallet-anchored application launcher with 50+ apps. Session Bridge enables seamless wallet-to-browser handoff across MetaMask, Coinbase, Trust, Rainbow, and 100+ wallets.
+
+### Also Included
+- **Multi-PWA Profiles** - Three installable configurations (Atlas, Launcher, Enterprise)
+- **LLM Orchestration** - OpenAI, Anthropic, and Gemini with automatic fallback
+- **NodeStream Visualization** - Real-time mesh network graphs
+- **Task Manager** - Encrypted workflow automation
+- **Explorer & Marketplace** - Discovery interfaces for content and apps
+
+---
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|--------------|
+| **Frontend** | React, TypeScript, Vite, TanStack Query, shadcn/ui, Tailwind CSS |
+| **Backend** | Node.js, Express, TypeScript, PostgreSQL (Drizzle ORM), WebSocket |
+| **Blockchain** | Ethers.js v6, Hardhat, Base Network, IPFS via Pinata |
+| **Cryptography** | TweetNaCl (X25519, XSalsa20-Poly1305), SHA-256, SIWE |
 
 ---
 
@@ -188,13 +106,18 @@ P3-Protocol/
 │   │   ├── lib/         # Utilities (crypto, websocket, etc.)
 │   │   └── hooks/       # React hooks
 ├── server/              # Express backend
-│   ├── services/        # Business logic (encryption, receipts, mesh)
+│   ├── services/        # Business logic
+│   ├── atlas/           # Atlas Transport layer
 │   └── routes.ts        # API endpoints
+├── packages/            # Extractable modules
+│   ├── zk/              # Zero-knowledge circuits
+│   └── bridge/          # Cross-chain bridge adapters
+├── rust/                # Rust modules
+│   └── pqcrypto/        # Post-quantum cryptography
 ├── shared/              # Shared types
 │   └── schema.ts        # Database schema & types
 ├── contracts/           # Solidity smart contracts
-├── docs/                # Technical documentation
-└── scripts/             # Deployment scripts
+└── docs/                # Technical documentation
 ```
 
 ---
@@ -202,33 +125,24 @@ P3-Protocol/
 ## Documentation
 
 ### Getting Started
-- **[Platform Overview](./docs/PLATFORM_OVERVIEW.md)** - Complete system introduction
 - **[Integration Guide](./docs/INTEGRATION_GUIDE.md)** - Modular component adoption
+- **[Platform Overview](./docs/PLATFORM_OVERVIEW.md)** - Complete system introduction
 - **[Environment Setup](./docs/ENV_SETUP.md)** - Configuration guide
-- **[Atlas Developer Guide](./docs/ATLAS_DEVELOPER_GUIDE.md)** - Building with Atlas
 
-### Architecture Guides
-- **[Architecture Overview](./docs/ARCHITECTURE.md)** - System design and patterns
+### Core System Guides
 - **[Session Bridge](./docs/SESSION_BRIDGE.md)** - Wallet-to-browser handoff
-- **[Modular Seams](./docs/MODULAR_SEAMS.md)** - Component extraction guide
 - **[Atlas Transport](./docs/ATLAS_TRANSPORT.md)** - Streaming and content delivery
 - **[Cross-Chain Bridge](./docs/CROSS_CHAIN_BRIDGE.md)** - Multi-chain receipt relay
-- **[Security Architecture](./docs/SECURITY_ARCHITECTURE.md)** - Auth, encryption, key management
-- **[Atlas Canvas Stack](./docs/ATLAS_CANVAS_STACK.md)** - UI framework and modes
-
-### Protocol Specifications
-- **[Atlas API v2](./docs/ATLAS_API_V2.md)** - 8-lane multiplexed protocol
-- **[Cross-Chain Receipts](./docs/CROSS_CHAIN_RECEIPTS.md)** - Blockchain anchoring
 - **[Cryptography Primitives](./docs/CRYPTOGRAPHY_PRIMITIVES.md)** - Encryption standards
-
-### Infrastructure
 - **[Real-Time Infrastructure](./docs/REALTIME_INFRASTRUCTURE.md)** - WebSocket, SSE, WebRTC
-- **[Mesh Network](./docs/MESH_NETWORK.md)** - Node relay and P2P networking
-- **[SDK & Manifests](./docs/SDK_AND_MANIFESTS.md)** - App extension system
+
+### Architecture
+- **[Architecture Overview](./docs/ARCHITECTURE.md)** - System design and patterns
+- **[Modular Seams](./docs/MODULAR_SEAMS.md)** - Component extraction guide
+- **[Security Architecture](./docs/SECURITY_ARCHITECTURE.md)** - Auth, encryption, key management
 
 ### Operations
 - **[API Reference](./docs/API.md)** - Endpoint documentation
-- **[API Bridge](./docs/API_BRIDGE.md)** - External API integrations
 - **[Deployment](./docs/DEPLOYMENT.md)** - Production deployment
 - **[Runbook](./docs/RUNBOOK.md)** - Operations and troubleshooting
 
@@ -254,7 +168,7 @@ See [docs/ENV_SETUP.md](./docs/ENV_SETUP.md) for full configuration guide.
 
 ## Contributing
 
-Contributions welcome! 
+Contributions welcome!
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
