@@ -89,21 +89,56 @@ See [packages/sdk/README.md](./packages/sdk/README.md) for full documentation.
 
 ---
 
-## AI-First: Customizing P3 in Seconds
+## AI-Powered Customization Playbook
 
-P3 is designed to be **"Prompt-able."** Because the architecture is modular and the lanes are abstracted, you can use AI to refactor the entire protocol for your specific use case.
+P3 is built for the AI-assisted development era. Modular architecture, clean abstractions, and documented seams make it ideal for Cursor, Copilot, or Claude-driven workflows.
 
-**Quick-Start Prompts for your AI Assistant:**
+### Install in Minutes
 
-| Goal | Prompt |
-|------|--------|
-| **Rename the Lanes** | *"I'm using the P3 Atlas Transport. In `server/atlas/transport.ts`, help me re-label Lane 4 for 'Real-time Medical Telemetry' and set its priority weight to 90."* |
-| **Swap the UI Shell** | *"Analyze the `client/` folder. Keep the P3 Bridge and Messaging logic, but help me replace the Atlas UI with a minimalist Tailwind CSS dashboard for a private DAO."* |
-| **Add Features** | *"In the `server/services/` directory, help me implement a ZK-proof check for Lane 2 that ensures only users with a specific NFT can broadcast."* |
-| **Custom Settlement** | *"Replace the Base Network anchoring in `server/services/receiptAnchor.ts` with Solana settlement using Anchor framework."* |
-| **White-Label** | *"Rebrand P3 Protocol to 'MyNetwork' across all client components, keeping the core mesh infrastructure intact."* |
+**Full Stack** (recommended for new projects)
+```bash
+git clone https://github.com/archi-tect0/P3-Protocol.git && cd P3-Protocol && npm install && npm run dev
+```
 
-The codebase is structured for AI-assisted development—modular seams, clear abstractions, and documented interfaces.
+**SDK Only** (add to existing app)
+```bash
+npm install @p3/protocol
+```
+
+**Module Extraction** (cherry-pick components)
+```bash
+# Copy just what you need
+cp -r P3-Protocol/server/services/sessionBridge.ts your-project/
+cp -r P3-Protocol/client/src/lib/crypto.ts your-project/
+```
+
+> **AI Tip:** Paste the output of `tree -L 2` into your AI assistant for instant codebase orientation.
+
+### Remix with AI
+
+| Surface | Files | Example Prompt |
+|---------|-------|----------------|
+| **Transport Lanes** | `server/atlas/transport.ts` | *"Rename Lane 4 to 'Medical Telemetry' with priority weight 90 and add rate limiting for HIPAA compliance."* |
+| **UI Shell** | `client/src/components/atlas/` | *"Replace the Atlas Canvas with a minimal dashboard. Keep Session Bridge and Nexus messaging intact."* |
+| **Settlement Layer** | `server/services/receiptAnchor.ts` | *"Swap Base Network anchoring for Solana using Anchor framework. Preserve the receipt hash format."* |
+| **Session Bridge** | `server/services/sessionBridge.ts` | *"Add Passkey/WebAuthn as a fallback authentication method alongside wallet signatures."* |
+| **Encryption** | `client/src/lib/crypto.ts` | *"Upgrade from X25519 to the Kyber hybrid envelope defined in `rust/pqcrypto/`."* |
+
+See [MODULAR_SEAMS.md](./docs/MODULAR_SEAMS.md) for extraction patterns.
+
+### New Frontiers
+
+**Ideas to build on P3:**
+
+| Concept | Description | Key Components |
+|---------|-------------|----------------|
+| **Sovereign Media Mesh** | Community-owned streaming where viewers are the CDN | Atlas Transport, Mesh Network, Receipt Anchoring |
+| **On-Prem Compliance Mesh** | Air-gapped enterprise network with audit trails | Session Bridge, PQ Crypto, Blockchain Anchoring |
+| **Disaster Response Comms** | Offline-first encrypted messaging for first responders | Nexus Messaging, WebRTC, Local-first sync |
+| **DAO Command Center** | Token-gated workspace with on-chain governance | ZK Circuits, Session Bridge, Task Manager |
+| **Creator Paywall Network** | Micro-payments for content with zero platform fees | Receipt Anchoring, Cross-Chain Bridge, Atlas Transport |
+
+> **Starter Prompt:** *"I want to build [concept]. Using P3 Protocol's `server/` and `client/` structure, scaffold the core features. Reference `docs/INTEGRATION_GUIDE.md` for component patterns."*
 
 ---
 
