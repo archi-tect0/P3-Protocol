@@ -67,6 +67,7 @@ const ApiBridgeGuide = lazy(() => import("@/pages/docs/ApiBridgeGuide"));
 const InfrastructureGuide = lazy(() => import("@/pages/docs/InfrastructureGuide"));
 const CrossChainGuide = lazy(() => import("@/pages/docs/CrossChainGuide"));
 const P3HubGuide = lazy(() => import("@/pages/docs/P3HubGuide"));
+const ApiExplorerPage = lazy(() => import("@/pages/docs/ApiExplorerPage"));
 
 const MessagingPanel = lazy(() => import("@/pages/hub/MessagingPanel"));
 const CallsPanel = lazy(() => import("@/pages/hub/CallsPanel"));
@@ -310,6 +311,7 @@ function AppContent() {
         <Route path="/docs/infrastructure" component={() => <Suspense fallback={<LoadingFallback />}><InfrastructureGuide /></Suspense>} />
         <Route path="/docs/cross-chain" component={() => <Suspense fallback={<LoadingFallback />}><CrossChainGuide /></Suspense>} />
         <Route path="/docs/p3-hub" component={() => <Suspense fallback={<LoadingFallback />}><P3HubGuide /></Suspense>} />
+        <Route path="/docs/api" component={() => <Suspense fallback={<LoadingFallback />}><ApiExplorerPage /></Suspense>} />
         
         {/* Ebook Marketplace Routes */}
         <Route path="/marketplace/ebook" component={() => <Suspense fallback={<LoadingFallback />}><EbookHome /></Suspense>} />

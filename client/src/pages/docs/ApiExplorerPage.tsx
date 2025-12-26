@@ -3,11 +3,9 @@ import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   ArrowLeft, Play, Copy, Check, ChevronRight, ChevronDown,
-  Globe, Lock, Wallet, Send, Anchor, MessageSquare, Radio,
-  Database, Key, Shield, Zap, Terminal, Code2, ExternalLink
+  Shield, Terminal, Code2, ExternalLink
 } from 'lucide-react';
 import SEO from '@/components/SEO';
 
@@ -177,6 +175,24 @@ const apiEndpoints: ApiEndpoint[] = [
     category: 'Observability',
     auth: 'none',
     response: '{ "ok": true, "status": "healthy", "uptime": 123456 }'
+  },
+  {
+    method: 'POST',
+    path: '/api/payments',
+    description: 'Initiate native token payment with receipt anchoring',
+    category: 'Blockchain Anchoring',
+    auth: 'session',
+    body: [
+      { name: 'to', type: 'string', required: true, description: 'Recipient wallet address' },
+      { name: 'amount', type: 'string', required: true, description: 'Amount in ETH (e.g., "0.1")' },
+      { name: 'memo', type: 'string', required: false, description: 'Optional payment memo' }
+    ],
+    response: '{ "ok": true, "payment": { "txHash": "0x...", "receipt": {...} } }',
+    example: `const payment = await P3.payNative(
+  "0x742d35Cc6634...",
+  "0.1"
+);
+console.log(payment.txHash);`
   }
 ];
 

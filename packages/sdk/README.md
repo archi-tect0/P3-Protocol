@@ -124,6 +124,32 @@ Enable privacy-preserving identity verification:
 const p3 = createP3Client({ useZK: true });
 ```
 
+## Publishing to npm
+
+The SDK is ready for npm publication:
+
+```bash
+# Navigate to SDK directory
+cd packages/sdk
+
+# Build the package
+npm run build
+
+# Login to npm (first time only)
+npm login
+
+# Publish to npm
+npm publish --access public
+```
+
+**Note**: The package is configured as `@p3/protocol`. Ensure you have permissions to publish under the `@p3` scope, or update the `name` field in `package.json` to your preferred scope.
+
+## Source
+
+Full source code and documentation available at:
+- **GitHub**: https://github.com/archi-tect0/P3-Protocol
+- **Documentation**: https://p3protocol.com/launcher/sdk
+
 ## License
 
 Apache License 2.0

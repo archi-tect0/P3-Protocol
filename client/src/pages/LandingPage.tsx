@@ -91,7 +91,7 @@ export default function LandingPage() {
               encrypted messaging, self-healing streams, blockchain receipts, or the entire mesh OS.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
               <a href="https://github.com/archi-tect0/P3-Protocol" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-200" data-testid="button-github">
                   <SiGithub className="w-5 h-5 mr-2" />
@@ -104,6 +104,28 @@ export default function LandingPage() {
                   Live Demo
                 </Button>
               </Link>
+            </div>
+            
+            <div className="bg-slate-900/80 rounded-xl border border-white/10 p-6 text-left max-w-2xl mx-auto" data-testid="quickstart-code">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-mono text-slate-500">5-line quickstart</span>
+                <span className="px-2 py-0.5 bg-emerald-500/20 rounded text-xs text-emerald-400">TypeScript</span>
+              </div>
+              <pre className="text-sm font-mono overflow-x-auto">
+<span className="text-slate-500">// Connect wallet and send encrypted message</span>
+{'\n'}<span className="text-violet-400">const</span> session = <span className="text-cyan-400">await</span> P3.wallet();
+{'\n'}<span className="text-violet-400">const</span> msg = <span className="text-cyan-400">await</span> P3.msgEncrypted(<span className="text-amber-400">"dm"</span>, {'{'} to: <span className="text-amber-400">"0x..."</span>, content: <span className="text-amber-400">"Hello"</span> {'}'});
+{'\n'}<span className="text-violet-400">const</span> receipt = <span className="text-cyan-400">await</span> P3.proofs.publish(msg);
+{'\n'}<span className="text-slate-500">// Receipt anchored on Base Network ✓</span>
+              </pre>
+              <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                <Link href="/docs/api">
+                  <span className="text-xs text-violet-400 hover:text-violet-300 cursor-pointer">Explore API →</span>
+                </Link>
+                <Link href="/launcher/sdk">
+                  <span className="text-xs text-slate-400 hover:text-white cursor-pointer">Full SDK Docs →</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
