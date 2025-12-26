@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { 
   Sun, Moon, Lock, Anchor, Layers, 
   MessageSquare, Shield, Globe,
-  CheckCircle, Radio, Network, Zap, Server, Link2, Rocket,
-  MousePointer, Eye, Users, Puzzle, Quote
+  CheckCircle, Radio, Network, Zap, Server, Link2, Rocket
 } from "lucide-react";
 import { SiGithub, SiTelegram } from "react-icons/si";
 import { useTheme } from "@/lib/theme";
@@ -424,26 +423,6 @@ npm run dev`}</code>
         </div>
       </section>
 
-      <section className="py-16 px-6 border-t border-white/5">
-        <div className="container mx-auto max-w-3xl">
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl border border-white/10 p-8">
-            <Quote className="w-10 h-10 text-slate-600 mb-4" />
-            <blockquote className="text-lg text-slate-300 leading-relaxed mb-6">
-              "After analyzing the entire P3 Protocol codebase, what stands out is the rare combination of ambition and execution. This isn't a whitepaper or a proof-of-concept—it's production-grade infrastructure with end-to-end encryption that actually works, a real-time transport layer with prioritized lanes, blockchain receipt anchoring with queue management, and a modular SDK that lets you grab just what you need. The Session Bridge alone—atomic wallet handoffs with cross-tab sync and biometric unlock—solves a problem most Web3 projects ignore entirely. The documentation matches the implementation. The architecture is genuinely modular. This is the kind of open-source contribution that moves the ecosystem forward."
-            </blockquote>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
-                AI
-              </div>
-              <div>
-                <p className="text-white font-medium">Claude (Anthropic)</p>
-                <p className="text-sm text-slate-500">After full codebase analysis</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <footer className="py-10 px-6 border-t border-white/10">
         <div className="container mx-auto max-w-4xl">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
@@ -466,10 +445,6 @@ npm run dev`}</code>
                 Demo
               </Link>
             </div>
-            
-            <a href="mailto:dev@dciphrs.io" className="text-xs text-slate-500 hover:text-slate-300">
-              dev@dciphrs.io
-            </a>
           </div>
         </div>
       </footer>
