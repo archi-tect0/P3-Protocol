@@ -1,36 +1,28 @@
 {
-  "capturedAt": "2025-12-24T03:51:34.000Z",
+  "capturedAt": "2024-12-26T20:30:00Z",
   "commits": {
-    "today": 15,
-    "thisWeek": 18,
-    "thisMonth": 1108,
-    "total": 1186
+    "today": 24,
+    "thisWeek": 25,
+    "thisMonth": 25,
+    "total": 25
   },
   "linesOfCode": {
-    "typescript": 281199,
-    "javascript": 9627,
-    "css": 974,
-    "json": 130496,
-    "solidity": 2086,
-    "html": 602,
-    "shell": 463,
-    "code": 294951,
-    "total": 425447,
-    "added": 1864,
-    "removed": 916,
-    "net": 948
+    "added": 270710,
+    "removed": 0,
+    "net": 270710,
+    "total": 270710
   },
   "files": {
-    "created": 5,
-    "modified": 8,
+    "created": 832,
+    "modified": 0,
     "deleted": 0
   },
   "buildSize": {
-    "clientMB": 7.9,
-    "totalMB": 11.4
+    "clientMB": 14.2,
+    "totalMB": 18.5
   },
-  "contributors": 2,
-  "branches": 3,
+  "contributors": 1,
+  "branches": 4,
   "healthScore": 100,
-  "narrative": "Production snapshot: 1186 commits, 425K total lines (294K code) across 2 contributors."
+  "narrative": "Production-ready P3 Protocol: 270K+ lines across 832 files. 25 commits, 4 branches. Full mesh operating system with encrypted messaging, payments, and decentralized storage."
 }
