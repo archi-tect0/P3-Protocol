@@ -49,7 +49,7 @@ pwa-routes.ts
 ├── imports: IStorage interface
 ├── imports: server/atlas/services/sessionBridge (startSession)
 ├── requires: JWT_SECRET env var
-└── methods: createInstallToken, getInstallToken, deleteInstallToken, cleanupExpiredInstallTokens
+└── storage methods: createInstallToken, getInstallToken, updateInstallTokenWallet, consumeInstallToken, cleanupExpiredInstallTokens
 ```
 
 ### External Dependencies
@@ -73,18 +73,29 @@ The server component requires an `IStorage` implementation with:
 interface IStorage {
   createInstallToken(data: InsertInstallToken): Promise<InstallToken>;
   getInstallToken(token: string): Promise<InstallToken | undefined>;
-  deleteInstallToken(token: string): Promise<void>;
+  updateInstallTokenWallet(token: string, walletAddress: string): Promise<void>;
+  consumeInstallToken(token: string): Promise<void>;
   cleanupExpiredInstallTokens(): Promise<void>;
 }
 ```
 
+### Server-Side Dependencies
+
+The PWA routes also import from Atlas services:
+```typescript
+import { startSession } from './atlas/services/sessionBridge';
+```
+This creates a session after token consumption. For standalone extraction, this would need to be abstracted or made optional.
+
 ### Extraction Checklist
 
 - [ ] Extract `coinbaseAuth.ts` alongside `sessionBridgeV2.ts`
-- [ ] Abstract `useAtlasStore` dependency in hook (make it configurable)
-- [ ] Create standalone storage adapter interface
+- [ ] Abstract `useAtlasStore` dependency in hook (make it configurable callback)
+- [ ] Abstract `startSession` dependency (make it optional or injectable)
+- [ ] Create standalone storage adapter interface with all 5 methods
 - [ ] Bundle JWT utilities or make them optional
 - [ ] Document WalletConnect project ID setup
+- [ ] Note: Hook connects to WebSocket at `/atlas/session` - document or make configurable
 
 ---
 
@@ -121,6 +132,19 @@ prover/index.ts
 ### Environment Variables
 
 None required.
+
+### Build Prerequisites
+
+Circuits require compilation before use:
+1. **circom CLI** - Compiles `.circom` to R1CS + WASM
+2. **snarkjs** - Generates proving/verification keys (Powers of Tau ceremony)
+3. **Build artifacts** - Not included in repo; generated via `npm run build`
+
+### Runtime Prerequisites
+
+The prover dynamically loads snarkjs at runtime:
+- If `snarkjs` is available: ZK proving works
+- If `snarkjs` is missing: Graceful degradation with error message (GPL exclusion for Apache 2.0)
 
 ### Extraction Checklist
 
@@ -280,14 +304,14 @@ Atlas Transport is deeply integrated with:
 
 The `packages/` directory already contains partially modular components:
 
-| Package | Has package.json | Standalone |
-|---------|-----------------|------------|
-| `packages/zk` | Yes (`@p3/zk`) | Yes |
-| `packages/bridge` | No | Partial |
-| `packages/protocol` | No | Unknown |
-| `packages/react-ui` | No | Unknown |
-| `packages/rollup` | No | Unknown |
-| `packages/sdk` | No | Minimal |
+| Package | Has package.json | Scoped Name | Standalone |
+|---------|-----------------|-------------|------------|
+| `packages/zk` | Yes | `@p3/zk` | Yes |
+| `packages/protocol` | Yes | `@p3/protocol` | Yes (protobuf schemas only) |
+| `packages/rollup` | Yes | `@p3/rollup` | Partial (has dependencies) |
+| `packages/bridge` | No | - | Partial |
+| `packages/react-ui` | No | - | Empty directory |
+| `packages/sdk` | No | - | Minimal (1 file) |
 
 ---
 
