@@ -58,6 +58,53 @@ P3 isn't a finished product—it's the factory. A production-ready template wher
 
 ---
 
+## Core Infrastructure
+
+These are the high-value subsystems that solve hard problems:
+
+### Session Bridge
+Atomic wallet-to-browser handoff with cross-device session continuity. Users connect once, stay connected across tabs, refreshes, and devices.
+```
+client/src/lib/sessionBridgeV2.ts  - Core bridge logic
+client/src/hooks/useSessionBridge.ts - React integration
+server/routes/pwa/*                 - Install token endpoints
+```
+
+### Atlas API v2 Transport
+8-lane multiplexed protocol with MessagePack encoding, adaptive compression, and session delta-sync. High-efficiency wire format for real-time applications.
+```
+server/protocol/transport.ts  - Transport layer
+server/protocol/encoding.ts   - MessagePack + compression
+server/protocol/wire.ts       - Wire protocol
+server/protocol/session/*     - Session management
+```
+
+### Post-Quantum Cryptography
+Kyber and Dilithium bindings ready for the post-quantum era. Rust-to-TypeScript bridge for quantum-safe key exchange and signatures.
+```
+rust/pqcrypto/          - Rust bindings
+packages/zk/            - TypeScript interop
+server/services/pq/     - Server-side PQ services
+```
+
+### Zero-Knowledge Circuits
+Pre-built ZK circuits for privacy-preserving proofs. Mesh reputation and message verification without revealing identity.
+```
+circuits/               - Circom circuits
+packages/zk/circuits/   - Compiled circuits
+packages/zk/prover/     - Proving services
+server/services/zkmsg/  - ZK message verification
+```
+
+### Viewport-Aware Prefetching
+Scroll-velocity-aware prefetching with IntersectionObserver, batch requests, and automatic cancellation. Netflix-grade content loading.
+```
+client/src/hooks/usePrefetchWindow.ts  - Prefetch engine
+server/atlas/one/*                      - Catalog batching
+```
+
+---
+
 ## Modular Architecture
 
 P3 Protocol is designed as a **composable toolkit**. Pick what you need:
