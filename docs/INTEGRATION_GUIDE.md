@@ -62,6 +62,40 @@ server/services/encryptionService.ts
 
 ---
 
+### Session Bridge
+**Use case:** Atomic wallet-to-browser handoff with cross-device session continuity.
+
+**Files to copy:**
+```
+client/src/lib/sessionBridgeV2.ts
+server/pwa-routes.ts
+shared/schema.ts (installTokens table)
+```
+
+**Key exports:**
+- `connectBridge()` - Connect wallet and establish session
+- `disconnectBridge()` - End session and clear state
+- `getSession()` - Retrieve current session state
+- `restoreBridge()` - Restore session on page reload
+- `triggerAtlasPopout()` - Handoff session to installed PWA
+- `triggerBrowserPopout()` - Open browser for WalletConnect QR
+- `signWithBridge()` - Sign messages with connected wallet
+- `sendWithBridge()` - Send transactions through bridge
+
+**Key patterns:**
+- Install token generation with 15-minute expiry
+- Cross-tab BroadcastChannel synchronization
+- Biometric unlock after wallet link
+- Zero-PII design (wallet address only)
+
+**Dependencies:** `viem`, `@coinbase/wallet-sdk`, `@walletconnect/ethereum-provider`
+
+**Storage requirements:** 5 methods (createInstallToken, getInstallToken, updateInstallTokenWallet, consumeInstallToken, cleanupExpiredInstallTokens)
+
+**Documentation:** [SESSION_BRIDGE.md](./SESSION_BRIDGE.md)
+
+---
+
 ### Real-Time Infrastructure
 **Use case:** Add WebSocket pub/sub, SSE streaming, or WebRTC signaling.
 

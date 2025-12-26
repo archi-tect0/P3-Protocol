@@ -111,6 +111,7 @@ P3 Protocol is designed as a **composable toolkit**. Pick what you need:
 
 | Component | Use Case | Documentation |
 |-----------|----------|---------------|
+| **Session Bridge** | Wallet-to-browser handoff | [SESSION_BRIDGE.md](./docs/SESSION_BRIDGE.md) |
 | **Cryptography** | E2E encryption for any app | [CRYPTOGRAPHY_PRIMITIVES.md](./docs/CRYPTOGRAPHY_PRIMITIVES.md) |
 | **Real-Time** | WebSocket, SSE, WebRTC | [REALTIME_INFRASTRUCTURE.md](./docs/REALTIME_INFRASTRUCTURE.md) |
 | **Receipt Anchoring** | Immutable audit trails | [CROSS_CHAIN_RECEIPTS.md](./docs/CROSS_CHAIN_RECEIPTS.md) |
@@ -204,6 +205,8 @@ P3-Protocol/
 
 ### Architecture Guides
 - **[Architecture Overview](./docs/ARCHITECTURE.md)** - System design and patterns
+- **[Session Bridge](./docs/SESSION_BRIDGE.md)** - Wallet-to-browser handoff
+- **[Modular Seams](./docs/MODULAR_SEAMS.md)** - Component extraction guide
 - **[Security Architecture](./docs/SECURITY_ARCHITECTURE.md)** - Auth, encryption, key management
 - **[Atlas Canvas Stack](./docs/ATLAS_CANVAS_STACK.md)** - UI framework and modes
 
