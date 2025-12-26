@@ -112,6 +112,10 @@ P3 Protocol is designed as a **composable toolkit**. Pick what you need:
 | Component | Use Case | Documentation |
 |-----------|----------|---------------|
 | **Session Bridge** | Wallet-to-browser handoff | [SESSION_BRIDGE.md](./docs/SESSION_BRIDGE.md) |
+| **ZK Circuits** | Privacy-preserving proofs | [packages/zk/README.md](./packages/zk/README.md) |
+| **PQ Crypto** | Post-quantum cryptography | [rust/pqcrypto/README.md](./rust/pqcrypto/README.md) |
+| **Cross-Chain Bridge** | Multi-chain receipt relay | [CROSS_CHAIN_BRIDGE.md](./docs/CROSS_CHAIN_BRIDGE.md) |
+| **Atlas Transport** | Streaming and content delivery | [ATLAS_TRANSPORT.md](./docs/ATLAS_TRANSPORT.md) |
 | **Cryptography** | E2E encryption for any app | [CRYPTOGRAPHY_PRIMITIVES.md](./docs/CRYPTOGRAPHY_PRIMITIVES.md) |
 | **Real-Time** | WebSocket, SSE, WebRTC | [REALTIME_INFRASTRUCTURE.md](./docs/REALTIME_INFRASTRUCTURE.md) |
 | **Receipt Anchoring** | Immutable audit trails | [CROSS_CHAIN_RECEIPTS.md](./docs/CROSS_CHAIN_RECEIPTS.md) |
@@ -207,6 +211,8 @@ P3-Protocol/
 - **[Architecture Overview](./docs/ARCHITECTURE.md)** - System design and patterns
 - **[Session Bridge](./docs/SESSION_BRIDGE.md)** - Wallet-to-browser handoff
 - **[Modular Seams](./docs/MODULAR_SEAMS.md)** - Component extraction guide
+- **[Atlas Transport](./docs/ATLAS_TRANSPORT.md)** - Streaming and content delivery
+- **[Cross-Chain Bridge](./docs/CROSS_CHAIN_BRIDGE.md)** - Multi-chain receipt relay
 - **[Security Architecture](./docs/SECURITY_ARCHITECTURE.md)** - Auth, encryption, key management
 - **[Atlas Canvas Stack](./docs/ATLAS_CANVAS_STACK.md)** - UI framework and modes
 
