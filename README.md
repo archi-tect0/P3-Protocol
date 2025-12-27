@@ -198,8 +198,18 @@ P3-Protocol/
 - **[Modular Seams](./docs/MODULAR_SEAMS.md)** - Component extraction guide
 - **[Security Architecture](./docs/SECURITY_ARCHITECTURE.md)** - Auth, encryption, key management
 
+### Advanced Systems
+Production-grade features for enterprise adoption:
+- **[Advanced Systems Overview](./docs/advanced/ADVANCED_SYSTEMS_OVERVIEW.md)** - Feature hub and adoption patterns
+- **[Security & Identity](./docs/advanced/SECURITY.md)** - Post-quantum Kyber, ZK proofs, secret vault, privacy telemetry
+- **[Enterprise Controls](./docs/advanced/ENTERPRISE.md)** - Tenant sandbox, SSO/OIDC, multi-tenant zones
+- **[Self-Healing Automation](./docs/advanced/AUTOMATION.md)** - Rules engine, immutable audit sequences
+- **[Marketplace & Commerce](./docs/advanced/MARKETPLACE.md)** - Content licensing, lending/borrowing, cross-chain settlement
+- **[Infrastructure](./docs/advanced/INFRASTRUCTURE.md)** - 8-lane protocol, PWA cache protection, decentralized EPG
+
 ### Operations
 - **[API Reference](./docs/API.md)** - Endpoint documentation
+- **[Operations Runbooks](./docs/operations/README.md)** - Production deployment and maintenance
 
 ---
 
