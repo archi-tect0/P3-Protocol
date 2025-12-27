@@ -1,6 +1,8 @@
 # Device Extensions
 
-Access Atlas from any device with a screen or speaker. P3 Protocol provides production-ready integrations for smart TVs and voice assistants, plus a universal handshake protocol for building custom device clients.
+Access Atlas from any device with a screen or speaker. P3 Protocol provides device extension specifications for smart TVs, voice assistants, and wearables, plus a universal handshake protocol for building custom device clients.
+
+> **Status:** Roku, Alexa, and Galaxy integrations are **works in progress**. The API specifications and integration patterns below document the target architecture. The Universal Handshake protocol is available now for building custom device clients.
 
 ---
 
@@ -34,11 +36,13 @@ Access Atlas from any device with a screen or speaker. P3 Protocol provides prod
 
 ---
 
-## Production-Ready Integrations
+## Device Integrations (Work in Progress)
 
 ### Roku Integration
 
-Full smart TV pairing system with QR codes and PIN unlock.
+> **Status:** 🚧 Work in Progress - API specification complete, implementation pending.
+
+Smart TV pairing system with QR codes and PIN unlock.
 
 **Endpoints:** `server/atlas/roku.ts`
 
@@ -122,6 +126,8 @@ const { sessionId, pairingCode, token, pairUrl } = await response.json();
 ---
 
 ### Alexa Integration
+
+> **Status:** 🚧 Work in Progress - API specification complete, implementation pending.
 
 Voice-first Atlas access with wallet-linked personalization.
 
@@ -449,6 +455,35 @@ curl -X POST /api/atlas/alexa \
 curl /api/atlas/alexa/metrics
 ```
 
+### Galaxy Watch/Wearable Integration
+
+> **Status:** 🚧 Work in Progress - Specification in development.
+
+Samsung Galaxy Watch and Wear OS integration for wrist-based Atlas access.
+
+**Planned Capabilities:**
+- Wallet notifications and transaction alerts
+- Quick payment confirmations via haptic feedback
+- Voice commands through Galaxy voice assistant
+- Companion app pairing with QR code
+- Health data integration for fitness-based rewards
+
+**Target API Endpoints:**
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/api/atlas/galaxy/session/start` | POST | Create wearable pairing session |
+| `/api/atlas/galaxy/session/:id/bind` | POST | Bind wallet to watch |
+| `/api/atlas/galaxy/notify` | POST | Send notification to watch |
+| `/api/atlas/galaxy/confirm` | POST | Request transaction confirmation |
+
+**Roadmap:**
+1. Companion app for Galaxy Store
+2. Wear OS support for cross-platform wearables
+3. Health data anchoring to blockchain receipts
+4. Mesh network participation via watch connectivity
+
+---
+
 ### Universal Handshake
 
 ```bash
@@ -462,10 +497,11 @@ curl -X POST /v1/session/handshake \
 
 ## File Reference
 
-| File | Purpose |
-|------|---------|
-| `server/atlas/roku.ts` | Roku pairing API |
-| `server/atlas/routes/alexa.ts` | Alexa voice interface |
-| `server/protocol/session/handshake.ts` | Universal device handshake |
-| `client/src/components/PinAuthDialog.tsx` | PIN unlock UI |
-| `client/src/lib/sessionBridgeV2.ts` | Cross-device session bridge |
+| File | Purpose | Status |
+|------|---------|--------|
+| `server/atlas/roku.ts` | Roku pairing API | 🚧 WIP |
+| `server/atlas/routes/alexa.ts` | Alexa voice interface | 🚧 WIP |
+| `server/atlas/galaxy.ts` | Galaxy wearable integration | 🚧 Planned |
+| `server/protocol/session/handshake.ts` | Universal device handshake | ✅ Available |
+| `client/src/components/PinAuthDialog.tsx` | PIN unlock UI | ✅ Available |
+| `client/src/lib/sessionBridgeV2.ts` | Cross-device session bridge | ✅ Available |
