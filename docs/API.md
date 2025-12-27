@@ -1854,21 +1854,33 @@ curl 'https://api.p3protocol.com/api/receipts?limit=25&offset=50' \
 
 ## Testing
 
-### Sandbox Environment
+### Local Development
 
-**Base URL:** `https://sandbox-api.p3protocol.com`
+**Base URL:** `http://localhost:5000`
 
-**Features:**
-- Free test tokens
-- Base Sepolia testnet
-- No rate limits
-- Data reset weekly
+Run locally with:
+```bash
+npm install
+npm run dev
+```
 
-### Test Wallets
+### Testnet Configuration
 
-Pre-funded test wallets available:
-- Wallet 1: `0xtest1...` (1000 ETH)
-- Wallet 2: `0xtest2...` (1000 ETH)
+For blockchain features, configure for Base Sepolia testnet:
+1. Get testnet ETH from [Base Sepolia Faucet](https://www.alchemy.com/faucets/base-sepolia)
+2. Use your own wallet (MetaMask, WalletConnect-compatible)
+3. Set `VITE_WALLETCONNECT_PROJECT_ID` for wallet connections
+
+### API Testing
+
+All endpoints can be tested locally:
+```bash
+# Health check
+curl http://localhost:5000/api/health
+
+# Global relay status
+curl http://localhost:5000/api/mesh/global/health
+```
 
 ---
 
