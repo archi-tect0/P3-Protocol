@@ -22,9 +22,10 @@ Complete API reference for the P3 Protocol REST and WebSocket APIs.
 12. [Inbox Endpoints](#inbox-endpoints)
 13. [Service Endpoints](#service-endpoints)
 14. [Rollup Endpoints](#rollup-endpoints)
-15. [ZK Proof Endpoints](#zk-proof-endpoints)
-16. [Webhooks](#webhooks)
-17. [WebSocket Events](#websocket-events)
+15. [Global Mesh Relay Endpoints](#global-mesh-relay-endpoints)
+16. [ZK Proof Endpoints](#zk-proof-endpoints)
+17. [Webhooks](#webhooks)
+18. [WebSocket Events](#websocket-events)
 
 ---
 
@@ -1306,6 +1307,209 @@ Relay receipt to another chain.
   "receiptId": "receipt-123",
   "txHash": "0xdef...",
   "status": "pending"
+}
+```
+
+---
+
+## Global Mesh Relay Endpoints
+
+The Global Relay Network enables cross-app P3 mesh connectivity. Nodes from different P3-based applications can discover and relay messages through each other using foundation lanes.
+
+### POST /api/mesh/global/register
+
+Register node with the global relay network.
+
+**Auth:** Wallet signature required
+
+**Request:**
+```json
+{
+  "nodeId": "node_abc123",
+  "wallet": "0x1234567890abcdef1234567890abcdef12345678",
+  "signature": "0x...",
+  "foundationLaneVersion": "1.0.0",
+  "customLanes": ["chat", "video"],
+  "capabilities": ["relay", "cache", "stream"],
+  "endpoint": "https://myapp.example.com",
+  "timestamp": 1735000000000
+}
+```
+
+**Signature Message Format:**
+```
+p3-global-relay:{nodeId}:{wallet}:{timestamp}
+```
+
+**Response:** `200 OK`
+```json
+{
+  "ok": true,
+  "nodeId": "node_abc123",
+  "registeredAt": 1735000000000,
+  "peersAvailable": 42,
+  "foundationLanes": {
+    "HANDSHAKE": 0,
+    "IDENTITY": 1,
+    "KEEPALIVE": 2,
+    "TELEMETRY": 3
+  }
+}
+```
+
+---
+
+### POST /api/mesh/global/unregister
+
+Leave the global relay network.
+
+**Headers:**
+```http
+x-wallet-address: 0x1234567890abcdef1234567890abcdef12345678
+```
+
+**Response:** `200 OK`
+```json
+{
+  "ok": true,
+  "message": "Unregistered from global network"
+}
+```
+
+---
+
+### GET /api/mesh/global/peers
+
+Discover available peers on the global network.
+
+**Headers:**
+```http
+x-wallet-address: 0x1234567890abcdef1234567890abcdef12345678
+```
+
+**Response:** `200 OK`
+```json
+{
+  "ok": true,
+  "peers": [
+    {
+      "nodeId": "node_xyz789",
+      "wallet": "0xabcd...",
+      "signature": "***",
+      "foundationLaneVersion": "1.0.0",
+      "customLanes": ["messaging"],
+      "capabilities": ["relay"],
+      "endpoint": "https://otherapp.example.com",
+      "timestamp": 1735000000000
+    }
+  ],
+  "total": 1,
+  "foundationLaneVersion": "1.0.0"
+}
+```
+
+---
+
+### POST /api/mesh/global/relay
+
+Send a message via global relay (foundation lanes only).
+
+**Headers:**
+```http
+x-wallet-address: 0x1234567890abcdef1234567890abcdef12345678
+```
+
+**Request:**
+```json
+{
+  "target": "node_xyz789",
+  "lane": 2,
+  "payload": {
+    "type": "keepalive",
+    "timestamp": 1735000000000
+  }
+}
+```
+
+**Lane Restrictions:**
+- Lane 0: Handshake
+- Lane 1: Identity
+- Lane 2: Keepalive
+- Lane 3: Telemetry
+- Lanes > 3: Rejected (custom lanes require direct peer connection)
+
+**Response:** `200 OK`
+```json
+{
+  "ok": true,
+  "relayed": true,
+  "lane": 2,
+  "timestamp": 1735000000000
+}
+```
+
+---
+
+### GET /api/mesh/global/messages
+
+Receive queued messages for this node.
+
+**Headers:**
+```http
+x-wallet-address: 0x1234567890abcdef1234567890abcdef12345678
+```
+
+**Response:** `200 OK`
+```json
+{
+  "ok": true,
+  "messages": [
+    {
+      "target": "node_abc123",
+      "lane": 2,
+      "payload": {"type": "keepalive"},
+      "timestamp": 1735000000000,
+      "from": "node_xyz789"
+    }
+  ]
+}
+```
+
+---
+
+### GET /api/mesh/global/stats
+
+Get global relay network statistics.
+
+**Response:** `200 OK`
+```json
+{
+  "ok": true,
+  "nodes": 42,
+  "relays": 1234,
+  "uptime": 86400,
+  "foundationLaneVersion": "1.0.0",
+  "foundationLanes": {
+    "HANDSHAKE": 0,
+    "IDENTITY": 1,
+    "KEEPALIVE": 2,
+    "TELEMETRY": 3
+  }
+}
+```
+
+---
+
+### GET /api/mesh/global/health
+
+Health check for the global relay service.
+
+**Response:** `200 OK`
+```json
+{
+  "ok": true,
+  "status": "healthy",
+  "nodes": 42
 }
 ```
 
