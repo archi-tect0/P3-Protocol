@@ -99,6 +99,49 @@ In server/routes.ts, add rate limiting middleware that uses wallet address
 as the key. Allow 100 requests/minute for authenticated users, 10 for anonymous.
 ```
 
+### Theming & Styling
+
+Atlas uses CSS variables for instant restyling. Change colors once, whole app updates.
+
+**Files:**
+| File | Purpose |
+|------|---------|
+| `client/src/index.css` | CSS variables (`:root`), utility classes |
+| `client/src/lib/theme.tsx` | ThemeProvider, light/dark toggle |
+
+**Core Variables:**
+```css
+--primary: 199 89% 48%;      /* Main brand color */
+--accent: 262 83% 58%;       /* Secondary highlight */
+--background: 220 20% 7%;    /* App background */
+--foreground: 210 40% 98%;   /* Text color */
+--nexus-cyan: 199 89% 48%;   /* Nexus brand */
+--nexus-purple: 262 83% 58%; /* Accent purple */
+```
+
+**AI Prompt - New Brand Theme:**
+```
+"In client/src/index.css, change the Atlas theme to match my brand:
+- --primary to warm orange (30 90% 50%)
+- --accent to coral (15 85% 55%)
+- --background to dark charcoal (220 15% 10%)
+Keep the .dark class in sync with :root changes."
+```
+
+**AI Prompt - Light Mode Focus:**
+```
+"Modify client/src/index.css to create a clean light theme:
+- :root gets light backgrounds (0 0% 98%)
+- .dark class gets current dark values
+- Update client/src/lib/theme.tsx to default to 'light'"
+```
+
+**Utility Classes Available:**
+- `.glass` / `.glass-card` / `.glass-panel` - Frosted glass effects
+- `.glow-green` / `.glow-red` / `.glow-blue` - Neon glow effects
+- `.text-gradient` - Gradient text
+- `.animate-float` / `.animate-wiggle` - Motion effects
+
 ---
 
 ## Mesh Network Alterations
