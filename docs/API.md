@@ -1885,6 +1885,6 @@ curl http://localhost:5000/api/mesh/global/health
 ---
 
 **For more information:**
-- [DEPLOYMENT.md](DEPLOYMENT.md) - Deployment guide
-- [RUNBOOK.md](RUNBOOK.md) - Operations procedures
 - [ARCHITECTURE.md](ARCHITECTURE.md) - System architecture
+- [INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md) - Modular component adoption
+- [AI_DEVELOPMENT_GUIDE.md](AI_DEVELOPMENT_GUIDE.md) - AI-assisted customization

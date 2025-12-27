@@ -862,6 +862,6 @@ See [API.md](API.md) for complete documentation.
 ---
 
 **For more information:**
-- [DEPLOYMENT.md](DEPLOYMENT.md) - Deployment guide
-- [RUNBOOK.md](RUNBOOK.md) - Operations procedures
 - [API.md](API.md) - Complete API reference
+- [INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md) - Modular component adoption
+- [AI_DEVELOPMENT_GUIDE.md](AI_DEVELOPMENT_GUIDE.md) - AI-assisted customization

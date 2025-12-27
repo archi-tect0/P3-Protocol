@@ -200,8 +200,6 @@ P3-Protocol/
 
 ### Operations
 - **[API Reference](./docs/API.md)** - Endpoint documentation
-- **[Deployment](./docs/DEPLOYMENT.md)** - Production deployment
-- **[Runbook](./docs/RUNBOOK.md)** - Operations and troubleshooting
 
 ---
 
