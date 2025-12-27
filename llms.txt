@@ -4,9 +4,9 @@
 
 ## Core Philosophy
 
-- **Constraint Architecture**: The system welcomes extension but prevents corruption. Security is baked into the "physics" of the protocol.
-- **Wallet-Anchored Sovereignty**: Every session, file, and byte is tied to a user-owned identity. The server is a blind relay; the user is the Master Control Program.
-- **8-Lane Grid**: Multiplexed transport ensuring that heavy media (4K) never blocks essential control signals.
+- **[Constraint Architecture](./docs/advanced/SECURITY.md)**: The system welcomes extension but prevents corruption. Security is baked into the "physics" of the protocol.
+- **[Wallet-Anchored Sovereignty](./docs/SESSION_BRIDGE.md)**: Every session, file, and byte is tied to a user-owned identity. The server is a blind relay; the user is the Master Control Program.
+- **[8-Lane Grid](./docs/advanced/INFRASTRUCTURE.md#8-lane-protocol)**: Multiplexed transport ensuring that heavy media (4K) never blocks essential control signals.
 
 ## Primary Infrastructure
 
