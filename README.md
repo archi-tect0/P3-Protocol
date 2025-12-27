@@ -54,7 +54,7 @@ P3 Protocol is a **composable toolkit**. Each system can be adopted independentl
 | **Cryptography** | E2E encryption (TweetNaCl X25519, XSalsa20-Poly1305) | [CRYPTOGRAPHY_PRIMITIVES.md](./docs/CRYPTOGRAPHY_PRIMITIVES.md) |
 | **Real-Time** | WebSocket pub/sub, SSE, WebRTC | [REALTIME_INFRASTRUCTURE.md](./docs/REALTIME_INFRASTRUCTURE.md) |
 | **Receipt Anchoring** | Immutable blockchain audit trails | [CROSS_CHAIN_RECEIPTS.md](./docs/CROSS_CHAIN_RECEIPTS.md) |
-| **Mesh Network** | Distributed P2P content delivery | [MESH_NETWORK.md](./docs/MESH_NETWORK.md) |
+| **Mesh Network** | Distributed P2P content delivery with Global Relay | [MESH_NETWORK.md](./docs/MESH_NETWORK.md) |
 | **Device Extensions** | Roku, Alexa, and universal device access | [DEVICE_EXTENSIONS.md](./docs/DEVICE_EXTENSIONS.md) |
 | **SDK** | One-click integration package | [packages/sdk/](./packages/sdk/README.md) |
 
@@ -128,6 +128,7 @@ Access Atlas from any screen. Production-ready Roku integration with QR pairing 
 - **Multi-PWA Profiles** - Three installable configurations (Atlas, Launcher, Enterprise)
 - **LLM Orchestration** - OpenAI, Anthropic, and Gemini with automatic fallback
 - **NodeStream Visualization** - Real-time mesh network graphs
+- **Global Relay Network** - Cross-app mesh connectivity with foundation lanes
 - **Task Manager** - Encrypted workflow automation
 - **Explorer & Marketplace** - Discovery interfaces for content and apps
 

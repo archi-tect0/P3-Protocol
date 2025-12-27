@@ -215,7 +215,7 @@ export default function SettingsTab({
   const [subscribing, setSubscribing] = useState(false);
   const [testingNotification, setTestingNotification] = useState(false);
   
-  const { visualization: storeVisualization, visualizationLoaded, setMode, setPulseView, setWallet, loadOnboardingState: _loadOnboardingState, resetOnboarding: resetStoreOnboarding, nodeMode, setNodeModeEnabled } = useAtlasStore();
+  const { visualization: storeVisualization, visualizationLoaded, setMode, setPulseView, setWallet, loadOnboardingState: _loadOnboardingState, resetOnboarding: resetStoreOnboarding, nodeMode, setNodeModeEnabled, setGlobalRelayEnabled } = useAtlasStore();
   const vizSettings = visualizationLoaded ? storeVisualization : DEFAULT_VISUALIZATION_SETTINGS;
   const [vizPreviewState, setVizPreviewState] = useState(DEFAULT_ATLAS_STATE);
   
@@ -1384,6 +1384,101 @@ export default function SettingsTab({
 
               <p className="text-xs text-slate-500 mt-3">
                 Your device is actively helping validate content and relay messages across the mesh.
+              </p>
+            </div>
+
+            <div className="glass-panel rounded-xl p-4 border-purple-500/20">
+              <h3 className="text-sm font-medium text-white mb-4 flex items-center gap-2">
+                <Globe className="w-4 h-4 text-purple-400" />
+                Global Relay Network
+              </h3>
+              
+              <p className="text-xs text-slate-400 mb-4">
+                Join the global P3 mesh network to relay across all P3-based apps. Your node will connect with nodes from other apps using the protocol, creating a unified decentralized network.
+              </p>
+
+              <div className="flex items-center justify-between p-3 bg-purple-500/10 rounded-lg mb-4 border border-purple-500/20">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                    <Globe className="w-4 h-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-white">Global Relay</p>
+                    <p className="text-xs text-slate-500">Cross-app mesh participation</p>
+                  </div>
+                </div>
+                <Switch
+                  data-testid="switch-global-relay"
+                  checked={nodeMode.globalRelayEnabled}
+                  disabled={!nodeMode.enabled}
+                  onCheckedChange={async (checked) => {
+                    try {
+                      const { setGlobalRelayEnabled: setMeshGlobalRelay } = await import('@/lib/meshClient');
+                      const { signMessage, getWCSession } = await import('@/lib/walletConnect');
+                      
+                      let signFn: ((msg: string) => Promise<string>) | undefined;
+                      const wcSession = getWCSession();
+                      
+                      if (checked && wcSession?.connected) {
+                        signFn = async (msg: string) => {
+                          const sig = await signMessage(msg);
+                          if (!sig) throw new Error('User rejected signature');
+                          return sig;
+                        };
+                      } else if (checked && !wcSession?.connected) {
+                        toast({
+                          title: 'Wallet Required',
+                          description: 'Connect your wallet to join the global relay network.',
+                          variant: 'destructive',
+                        });
+                        return;
+                      }
+                      
+                      const result = await setMeshGlobalRelay(checked, signFn, wcSession?.address);
+                      if (result.success) {
+                        setGlobalRelayEnabled(checked, result.nodeId || null);
+                        toast({
+                          title: checked ? 'Global Relay enabled' : 'Global Relay disabled',
+                          description: checked 
+                            ? 'You are now part of the global P3 mesh network.'
+                            : 'You have left the global mesh network.',
+                        });
+                      } else {
+                        toast({
+                          title: 'Failed to toggle Global Relay',
+                          description: result.error || 'Please try again.',
+                          variant: 'destructive',
+                        });
+                      }
+                    } catch (err) {
+                      console.error('Failed to toggle global relay:', err);
+                      toast({
+                        title: 'Error',
+                        description: 'Failed to toggle Global Relay',
+                        variant: 'destructive',
+                      });
+                    }
+                  }}
+                />
+              </div>
+
+              {nodeMode.globalRelayEnabled && (
+                <div className="space-y-2 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-400">Status</span>
+                    <span className="text-purple-400 flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3" /> Connected
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-400">Foundation Lanes</span>
+                    <span className="text-white">v1.0.0</span>
+                  </div>
+                </div>
+              )}
+
+              <p className="text-xs text-slate-500 mt-3">
+                Foundation lanes (handshake, identity, keepalive, telemetry) work universally across all P3 apps regardless of custom lane configurations.
               </p>
             </div>
           </div>

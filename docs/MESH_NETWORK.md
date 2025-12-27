@@ -364,6 +364,124 @@ Currently uses Atlas v2 relay as trusted backend. Future versions will implement
 
 ---
 
+## 8. Global Relay Network
+
+The Global Relay Network enables cross-app mesh connectivity. If 1000 different apps adopt P3 Protocol, their nodes can discover and relay through each other.
+
+### Foundation Lanes
+
+Foundation lanes are universal and immutable across all P3 implementations:
+
+| Lane | Purpose | Description |
+|------|---------|-------------|
+| 0 | Handshake | Control and capability negotiation |
+| 1 | Identity | Wallet signatures and attestation |
+| 2 | Keepalive | Heartbeat and connection health |
+| 3 | Telemetry | Relay metrics and diagnostics |
+
+Custom lanes (10+) can be reprogrammed per-app, but foundation lanes always work universally.
+
+### Node Manifest
+
+Nodes advertise their capabilities to the global registry:
+
+```typescript
+interface NodeManifest {
+  nodeId: string;
+  wallet: string;
+  signature: string;
+  foundationLaneVersion: string;
+  customLanes: string[];
+  capabilities: string[];
+  endpoint: string;
+  timestamp: number;
+}
+```
+
+### Enabling Global Relay
+
+**Via Settings UI:**
+1. Connect your wallet (required for signature verification)
+2. Navigate to Atlas Settings → Node Mode
+3. Enable "Node Mode" (local mesh)
+4. Toggle "Global Relay" to join the global network
+5. Sign the registration message when prompted by your wallet
+
+**Via Code:**
+
+```typescript
+import { setGlobalRelayEnabled, isGlobalRelayEnabled, getMeshClient } from '@/lib/meshClient';
+
+// Enable global relay
+const success = await setGlobalRelayEnabled(true);
+
+// Check status
+const isEnabled = isGlobalRelayEnabled();
+
+// Discover global peers
+const meshClient = getMeshClient();
+const peers = await meshClient?.discoverGlobalPeers();
+
+// Send via global relay (foundation lanes only)
+await meshClient?.relayViaGlobal(targetNodeId, 0, { type: 'ping' });
+```
+
+### API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/mesh/global/register` | POST | Register node with global network |
+| `/api/mesh/global/unregister` | POST | Leave global network |
+| `/api/mesh/global/peers` | GET | Discover available peers |
+| `/api/mesh/global/relay` | POST | Send message via global relay |
+| `/api/mesh/global/messages` | GET | Receive queued messages |
+| `/api/mesh/global/stats` | GET | Network statistics |
+| `/api/mesh/global/health` | GET | Health check |
+
+### Security Considerations
+
+1. **Foundation Lane Isolation**: Global relay only supports lanes 0-3. Custom app lanes cannot be relayed globally.
+
+2. **Wallet Attestation**: ECDSA signature verification ensures nodes prove wallet ownership.
+   - Nodes sign a canonical message: `p3-global-relay:{nodeId}:{wallet}:{timestamp}`
+   - Server recovers the signer address using `ethers.verifyMessage()` and compares to claimed wallet
+   - Timestamps must be within 5 minutes to prevent replay attacks
+
+3. **Payload Limits**: Relay messages are capped at 64KB to prevent memory exhaustion attacks.
+
+4. **Sender Validation**: Only registered nodes can relay messages through the global network.
+
+5. **Rate Limiting**: Relay messages are rate-limited per-node to prevent abuse.
+
+6. **Stale Node Cleanup**: Nodes that don't heartbeat within 5 minutes are removed.
+
+### Cross-App Relay Example
+
+App A (messaging app) and App B (video app) both use P3 Protocol:
+
+```
+App A Node                Global Registry                App B Node
+    │                            │                            │
+    │  1. Register(manifest)     │                            │
+    │───────────────────────────►│                            │
+    │                            │                            │
+    │                            │  2. Register(manifest)     │
+    │                            │◄───────────────────────────│
+    │                            │                            │
+    │  3. DiscoverPeers()        │                            │
+    │───────────────────────────►│                            │
+    │  [App B Node visible]      │                            │
+    │◄───────────────────────────│                            │
+    │                            │                            │
+    │  4. Relay(lane:0, keepalive)                            │
+    │────────────────────────────────────────────────────────►│
+    │                            │                            │
+```
+
+Even though App A uses lanes 10-15 for chat and App B uses lanes 10-15 for video, they can still relay foundation lane messages through each other.
+
+---
+
 ## Related Documentation
 
 - [ENV_SETUP.md](./ENV_SETUP.md) - Environment configuration

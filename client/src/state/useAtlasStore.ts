@@ -120,6 +120,8 @@ export interface NodeDiagnostics {
 
 export interface NodeModeState {
   enabled: boolean;
+  globalRelayEnabled: boolean;
+  globalNodeId: string | null;
   diagnostics: NodeDiagnostics | null;
   narrative: string;
 }
@@ -187,6 +189,7 @@ interface AtlasState {
   
   nodeMode: NodeModeState;
   setNodeModeEnabled: (enabled: boolean) => void;
+  setGlobalRelayEnabled: (enabled: boolean, nodeId?: string | null) => void;
   setNodeDiagnostics: (diagnostics: NodeDiagnostics | null, narrative?: string) => void;
   
   runningApps: RunningApp[];
@@ -332,12 +335,18 @@ export const useAtlasStore = create<AtlasState>((set) => ({
   
   nodeMode: {
     enabled: true,
+    globalRelayEnabled: false,
+    globalNodeId: null,
     diagnostics: null,
     narrative: 'Node Mode is active by default to help Atlas monitor and stabilize your connection.',
   },
   
   setNodeModeEnabled: (enabled) => set((s) => ({
     nodeMode: { ...s.nodeMode, enabled }
+  })),
+  
+  setGlobalRelayEnabled: (enabled, nodeId = null) => set((s) => ({
+    nodeMode: { ...s.nodeMode, globalRelayEnabled: enabled, globalNodeId: nodeId }
   })),
   
   setNodeDiagnostics: (diagnostics, narrative) => set((s) => ({

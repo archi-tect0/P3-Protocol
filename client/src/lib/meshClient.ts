@@ -3,6 +3,10 @@
  * 
  * Decentralized streaming mesh network client using Atlas v2 relay as the transport backend.
  * Provides manifest management, chunk dissemination, and event subscription.
+ * 
+ * Supports two mesh modes:
+ * - Local Mesh: Connect to nodes within the same app deployment
+ * - Global Relay: Connect to the P3 Global Node Network (cross-app mesh)
  */
 
 import type {
@@ -15,7 +19,52 @@ import type {
 } from '@shared/nodestream-types';
 
 const V2_BASE = '/api/atlas/streaming/v2/nodestream';
+const GLOBAL_REGISTRY_BASE = '/api/mesh/global';
 const POLL_INTERVAL_MS = 5000;
+
+/**
+ * Build the canonical signing message for global relay registration
+ * Must match server-side buildSigningMessage exactly
+ */
+export function buildGlobalRelaySigningMessage(nodeId: string, wallet: string, timestamp: number): string {
+  return `p3-global-relay:${nodeId}:${wallet.toLowerCase()}:${timestamp}`;
+}
+
+/**
+ * Foundation Lanes - Universal across all P3 implementations
+ * These lanes are immutable and work regardless of app customizations
+ */
+export const FOUNDATION_LANES = {
+  HANDSHAKE: 0,    // Control and capability negotiation
+  IDENTITY: 1,     // Wallet signatures and attestation
+  KEEPALIVE: 2,    // Heartbeat and connection health
+  TELEMETRY: 3,    // Relay metrics and diagnostics
+} as const;
+
+/**
+ * Node Manifest for Global Relay Network
+ * Advertises node capabilities to the global registry
+ */
+export interface NodeManifest {
+  nodeId: string;
+  wallet: string;
+  signature: string;
+  foundationLaneVersion: string;
+  customLanes: string[];
+  capabilities: string[];
+  endpoint: string;
+  timestamp: number;
+}
+
+/**
+ * Global Relay Configuration
+ */
+export interface GlobalRelayConfig {
+  enabled: boolean;
+  foundationLaneVersion: string;
+  maxRelayPeers: number;
+  telemetryEnabled: boolean;
+}
 
 type ManifestCallback = (manifest: StreamManifest) => void;
 type EventCallback = (event: CommentEvent | ReactionEvent) => void;
@@ -373,9 +422,161 @@ export class MeshClient {
     this.lastSeenManifestIds.clear();
     this.lastSeenEventIds.clear();
   }
+
+  // ============================================
+  // Global Relay Network Methods
+  // ============================================
+
+  /**
+   * Register this node with the global relay network
+   * Publishes a signed manifest advertising capabilities
+   */
+  async registerGlobalNode(customLanes: string[] = [], signMessageFn?: (message: string) => Promise<string>, walletAddress?: string): Promise<{ success: boolean; nodeId: string; error?: string }> {
+    try {
+      if (!walletAddress || !signMessageFn) {
+        return { success: false, nodeId: '', error: 'Wallet connection required for global relay' };
+      }
+
+      if (!(walletAddress.startsWith('0x') && /^0x[a-fA-F0-9]{40}$/.test(walletAddress))) {
+        return { success: false, nodeId: '', error: 'Invalid wallet address format' };
+      }
+
+      const nodeId = await this.generateNodeId();
+      const timestamp = Date.now();
+      const wallet = walletAddress;
+      const message = buildGlobalRelaySigningMessage(nodeId, wallet, timestamp);
+      const signature = await signMessageFn(message);
+
+      const manifest: NodeManifest = {
+        nodeId,
+        wallet,
+        signature,
+        foundationLaneVersion: '1.0.0',
+        customLanes,
+        capabilities: ['relay', 'cache', 'stream'],
+        endpoint: window.location.origin,
+        timestamp,
+      };
+
+      const response = await fetch(`${GLOBAL_REGISTRY_BASE}/register`, {
+        method: 'POST',
+        headers: this.getHeaders(),
+        body: JSON.stringify(manifest),
+      });
+
+      const result = await response.json();
+      
+      if (!response.ok || !result.ok) {
+        console.error('[MeshClient] Global registration rejected:', result.error);
+        return { success: false, nodeId: '', error: result.error || 'Registration failed' };
+      }
+
+      console.log('[MeshClient] Registered with global relay network:', nodeId);
+      return { success: true, nodeId: result.nodeId || nodeId };
+    } catch (error) {
+      console.error('[MeshClient] Global registration failed:', error);
+      return { success: false, nodeId: '', error: String(error) };
+    }
+  }
+
+  /**
+   * Discover peers on the global relay network
+   */
+  async discoverGlobalPeers(): Promise<NodeManifest[]> {
+    try {
+      const response = await fetch(`${GLOBAL_REGISTRY_BASE}/peers`, {
+        method: 'GET',
+        headers: this.getHeaders(),
+      });
+
+      if (!response.ok) {
+        return [];
+      }
+
+      const data = await response.json();
+      return data.peers || [];
+    } catch (error) {
+      console.error('[MeshClient] Peer discovery failed:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Send a message via global relay (foundation lane)
+   */
+  async relayViaGlobal(targetNodeId: string, lane: number, payload: any): Promise<boolean> {
+    try {
+      const response = await fetch(`${GLOBAL_REGISTRY_BASE}/relay`, {
+        method: 'POST',
+        headers: this.getHeaders(),
+        body: JSON.stringify({
+          target: targetNodeId,
+          lane,
+          payload,
+          timestamp: Date.now(),
+        }),
+      });
+
+      return response.ok;
+    } catch (error) {
+      console.error('[MeshClient] Global relay failed:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Get global network statistics
+   */
+  async getGlobalStats(): Promise<{ nodes: number; relays: number; uptime: number } | null> {
+    try {
+      const response = await fetch(`${GLOBAL_REGISTRY_BASE}/stats`, {
+        method: 'GET',
+        headers: this.getHeaders(),
+      });
+
+      if (!response.ok) {
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('[MeshClient] Failed to get global stats:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Unregister from the global relay network
+   */
+  async unregisterGlobalNode(): Promise<boolean> {
+    try {
+      const response = await fetch(`${GLOBAL_REGISTRY_BASE}/unregister`, {
+        method: 'POST',
+        headers: this.getHeaders(),
+      });
+
+      return response.ok;
+    } catch (error) {
+      console.error('[MeshClient] Global unregistration failed:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Generate a unique node ID based on session
+   */
+  private async generateNodeId(): Promise<string> {
+    const data = `${this.session.did}:${Date.now()}:${Math.random()}`;
+    const encoder = new TextEncoder();
+    const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(data));
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return 'node_' + hashArray.slice(0, 8).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
 }
 
 let meshClientInstance: MeshClient | null = null;
+let globalRelayEnabled = false;
+let globalNodeId: string | null = null;
 
 /**
  * Get or create the singleton MeshClient instance
@@ -406,6 +607,55 @@ export function destroyMeshClient(): void {
     meshClientInstance.destroy();
     meshClientInstance = null;
   }
+  globalRelayEnabled = false;
+  globalNodeId = null;
+}
+
+/**
+ * Enable or disable global relay participation
+ */
+export async function setGlobalRelayEnabled(
+  enabled: boolean, 
+  signMessageFn?: (message: string) => Promise<string>,
+  walletAddress?: string
+): Promise<{ success: boolean; nodeId?: string; error?: string }> {
+  if (!meshClientInstance) {
+    console.warn('[MeshClient] Cannot toggle global relay: no active mesh client');
+    return { success: false, error: 'No active mesh client' };
+  }
+
+  if (enabled && !globalRelayEnabled) {
+    const result = await meshClientInstance.registerGlobalNode([], signMessageFn, walletAddress);
+    if (result.success) {
+      globalRelayEnabled = true;
+      globalNodeId = result.nodeId;
+      console.log('[MeshClient] Global relay enabled, node:', globalNodeId);
+      return { success: true, nodeId: result.nodeId };
+    }
+    return { success: false, error: result.error };
+  } else if (!enabled && globalRelayEnabled) {
+    await meshClientInstance.unregisterGlobalNode();
+    globalRelayEnabled = false;
+    globalNodeId = null;
+    console.log('[MeshClient] Global relay disabled');
+    return { success: true };
+  }
+
+  return { success: true, nodeId: globalNodeId || undefined };
+}
+
+/**
+ * Check if global relay is enabled
+ */
+export function isGlobalRelayEnabled(): boolean {
+  return globalRelayEnabled;
+}
+
+/**
+ * Get the current global node ID
+ */
+export function getGlobalNodeId(): string | null {
+  return globalNodeId;
 }
 
 export default MeshClient;

@@ -47,6 +47,7 @@ import pwaRouter from './routes/marketplace-pwa';
 import launcherRouter from './routes/launcher';
 import vaultRouter from './routes/vault';
 import radioRouter from './routes/radio';
+import globalRelayRouter from './mesh/globalRelay';
 import { authRateLimiter, adminChallengeRateLimiter } from './middleware/security';
 import { handleError, AppError, ErrorCategory, withDatabaseErrorHandling } from './utils/error-handler';
 import { rootLogger } from './observability/logger';
@@ -3375,6 +3376,12 @@ export function createRoutes(storage: IStorage): Router {
   // ============================================================================
 
   router.use('/api/radio', radioRouter);
+
+  // ============================================================================
+  // Global Mesh Relay Routes (Cross-app P3 node network)
+  // ============================================================================
+
+  router.use('/api/mesh/global', globalRelayRouter);
   
   // Start the benchmark runner to populate comparison metrics
   startBenchmarkRunner();
