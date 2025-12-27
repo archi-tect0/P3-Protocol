@@ -21,9 +21,6 @@ wearos-app/
 # Private/internal docs
 audit/
 SECURITY_AUDIT.md
-DEPLOYMENT.md
-DEPLOYMENT_FIX.md
-DEPLOYMENT_FIXES_SUMMARY.md
 IPFS_PRODUCTION_SETUP.md
 PRODUCTION_READY.md
 Replitbak.md
@@ -36,7 +33,6 @@ docs/ENTERPRISE_GAP_ANALYSIS.md
 docs/ORPHAN_CODE_AUDIT.md
 docs/NEXUS_CANVAS_INTEGRATION.md
 docs/P3-PROTOCOL-EXPLAINED.txt
-docs/DEPLOYMENT.md
 docs/RUNBOOK.md
 
 # GitHub workflows (OAuth permission issue)
