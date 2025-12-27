@@ -834,6 +834,133 @@ anchor all commands to blockchain."
 
 ---
 
+### Mainstream Web3 & Web2 Mashups
+
+These are the everyday apps developers want to build - familiar concepts powered by Atlas's unique capabilities.
+
+#### NFT Marketplace & Gallery
+
+**Components:** GalleryMode, MarketplaceTile, ReceiptsMode, TokensMode, Lane 6 media
+
+**AI Prompt:**
+```
+"Generate an ExternalAppManifest 'nft-gallery' that pins Gallery, Marketplace, 
+Receipts, Tokens modes and streams showcase video on lane-6 while anchoring 
+sales via receipts."
+```
+
+---
+
+#### Token Launchpad
+
+**Components:** GovernanceMode, SandboxMode, ReceiptsMode, PaymentsMode
+
+**AI Prompt:**
+```
+"Create a 'token-launchpad' profile that wires Governance proposals to token 
+mint configs, validates via Sandbox simulations, and issues receipts for 
+each launch milestone."
+```
+
+---
+
+#### DEX Swap Terminal
+
+**Components:** TokensMode, CalcMode, AnalyticsTile, NodeStreamMode
+
+**AI Prompt:**
+```
+"Remix AtlasCanvas so TokensMode hosts swap pairs, CalcMode handles slippage 
+math, Analytics streams price feeds over lane-2 via NodeStream."
+```
+
+---
+
+#### Staking & Yield Dashboard
+
+**Components:** PulseMode, TokensMode, ReceiptsMode, Notifications
+
+**AI Prompt:**
+```
+"Draft 'staking-dashboard' manifest aggregating validator stats in Pulse, 
+staking balances in Tokens, auto-anchoring reward receipts, and surfacing 
+notifications."
+```
+
+---
+
+#### Wallet Portfolio Tracker
+
+**Components:** TokensMode, AnalyticsTile, DirectoryMode, FeedMode
+
+**AI Prompt:**
+```
+"Configure 'portfolio-tracker' site profile locking Tokens, Analytics, 
+Directory, Feed modes with lane-5 news ingestion."
+```
+
+---
+
+#### DAO Treasury Console
+
+**Components:** GovernanceMode, ReceiptsMode, CalcMode, CallsMode
+
+**AI Prompt:**
+```
+"Generate 'dao-treasury' manifest to manage proposals, visualize treasury 
+math, and schedule voice calls for approvals with receipt anchoring."
+```
+
+---
+
+#### Airdrop & Rewards Manager
+
+**Components:** RewardTile, DirectoryMode, NotificationsMode, ReceiptsMode
+
+**AI Prompt:**
+```
+"Create an ExternalAppManifest 'airdrop-manager' that ingests wallet lists 
+via Directory, issues reward receipts, and pushes status notifications."
+```
+
+---
+
+#### Social Feed & Messaging Hub
+
+**Components:** FeedMode, MessagesMode, PresenceTile, Media uploads
+
+**AI Prompt:**
+```
+"Remix AtlasCanvas for 'social-hub' prioritizing Feed, Messages, Presence 
+and enabling media lane-6 uploads with moderation hooks."
+```
+
+---
+
+#### E-commerce Storefront
+
+**Components:** MarketplaceTile, PaymentsMode, GalleryMode, ReceiptsMode
+
+**AI Prompt:**
+```
+"Spin up 'commerce-storefront' profile combining product gallery, Payments 
+checkout, and receipt anchoring per order."
+```
+
+---
+
+#### Project Management Workspace
+
+**Components:** TaskManagerMode, NotesMode, CallsMode, DirectoryMode, Notifications
+
+**AI Prompt:**
+```
+"Build 'project-workspace' manifest aligning TaskManager, Notes, Calls, 
+Directory modes with lane-2 task events and reminder notifications."
+```
+
+---
+
 ## Forward-Looking Blueprints
 
 ### Global AI Mesh Futures
