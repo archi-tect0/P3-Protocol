@@ -11,11 +11,13 @@ P3 Protocol is architected for the AI-assisted development era. This guide shows
 1. [Orientation & Setup](#orientation--setup)
 2. [Code Manipulation Patterns](#code-manipulation-patterns)
 3. [Mesh Network Alterations](#mesh-network-alterations)
+   - [Global Relay Network](#global-relay-network)
 4. [Atlas Transport Lane Customization](#atlas-transport-lane-customization)
 5. [Node Configuration by App Type](#node-configuration-by-app-type)
 6. [The Three Shells](#the-three-shells)
 7. [Device Extension Prompts](#device-extension-prompts)
 8. [Forward-Looking Blueprints](#forward-looking-blueprints)
+   - [Global AI Mesh Futures](#global-ai-mesh-futures)
 9. [AI Prompt Recipe Book](#ai-prompt-recipe-book)
 
 ---
@@ -133,6 +135,56 @@ Create a new service in server/services/meshTelemetry.ts that tracks:
 - Geographic distribution of nodes
 Expose this via /api/mesh/stats endpoint.
 ```
+
+### Global Relay Network
+
+The Global Relay Network enables cross-app mesh connectivity. If 1000 different apps adopt P3 Protocol, their nodes can discover and relay through each other using foundation lanes.
+
+| Component | File | Purpose |
+|-----------|------|---------|
+| Global Registry | `server/mesh/globalRelay.ts` | Node registration, peer discovery |
+| Mesh Client | `client/src/lib/meshClient.ts` | `registerGlobalNode()`, `discoverGlobalPeers()` |
+| UI Toggle | Settings → Node Mode → Global Relay | User control |
+
+**Foundation Lanes (Universal):**
+
+| Lane | Purpose | Cross-App Relay |
+|------|---------|-----------------|
+| 0 | Handshake | ✅ Yes |
+| 1 | Identity | ✅ Yes |
+| 2 | Keepalive | ✅ Yes |
+| 3 | Telemetry | ✅ Yes |
+| 4+ | Custom (app-specific) | ❌ No (security isolation) |
+
+**Enable global relay via AI prompt:**
+```
+In client/src/pages/atlas/SettingsTab.tsx, the Global Relay toggle 
+uses WalletConnect to sign the canonical message:
+  p3-global-relay:{nodeId}:{wallet}:{timestamp}
+
+The backend in server/mesh/globalRelay.ts verifies using ethers.verifyMessage()
+to ensure nodes prove wallet ownership before joining the global network.
+```
+
+**AI-powered peer discovery:**
+```
+Extend server/mesh/globalRelay.ts to add intelligent peer selection:
+1. Score peers by latency, uptime, and relay success rate
+2. Use embeddings on node capabilities for semantic matching
+3. Prefer geographically proximate nodes for lower latency
+4. Implement load balancing across available relays
+```
+
+**Atlas automation for global relay:**
+```
+Add Atlas intent handlers for global relay operations:
+- "Join the global network" → enable global relay toggle
+- "Show global network status" → fetch /api/mesh/global/stats
+- "Find peers with video capability" → filter discoverGlobalPeers()
+- "Relay keepalive to all governance nodes" → targeted lane-2 broadcast
+```
+
+**Reference:** [MESH_NETWORK.md](./MESH_NETWORK.md) for full technical details, [API.md](./API.md) for endpoint reference.
 
 ---
 
@@ -508,6 +560,54 @@ Return SSML-formatted speech responses for TTS processing."
 ---
 
 ## Forward-Looking Blueprints
+
+### Global AI Mesh Futures
+
+The Global Relay Network opens transformative possibilities for AI-enhanced decentralized systems:
+
+| Capability | Description | Foundation Lane |
+|------------|-------------|-----------------|
+| **AI-Powered Node Discovery** | Use embeddings to match nodes by semantic capabilities; LLMs classify telemetry to identify high-quality relays | Lane 3 (Telemetry) |
+| **LLM Routing Optimization** | AI agents analyze lane KPIs and rebalance traffic across the global mesh for optimal performance | Lane 0 (Handshake) |
+| **Self-Healing Diagnostics** | Atlas agents monitor `/health` and `/stats`, generate repair intents, and invoke keepalive relays to recover degraded nodes | Lane 2 (Keepalive) |
+| **Intent-Based Commands** | Natural language → mesh actions: "Relay telemetry to governance nodes" translates to lane-3 targeted broadcast | Lane 3 (Telemetry) |
+| **Cross-App AI Collaboration** | Foundation lanes host shared context (prompt caches, multilingual summaries) synchronized via relay queues | Lanes 0-3 |
+| **Adaptive Trust Scoring** | LLMs label anomalous nodes based on behavior patterns, feeding back into registration criteria | Lane 1 (Identity) |
+
+**AI Prompt: Build AI-powered mesh optimizer:**
+```
+Create server/mesh/aiOptimizer.ts that:
+1. Fetches /api/mesh/global/stats every 30 seconds
+2. Uses an LLM to analyze node health patterns
+3. Identifies underperforming nodes and generates remediation intents
+4. Sends keepalive probes via lane-2 to verify node responsiveness
+5. Suggests peer rebalancing to Atlas for user confirmation
+
+Reference the foundation lane isolation in server/mesh/globalRelay.ts 
+to ensure all AI-driven relays stay within lanes 0-3.
+```
+
+**AI Prompt: Cross-app context sharing:**
+```
+Implement shared AI context across P3 apps using foundation lanes:
+1. Lane 0 (Handshake): Negotiate shared context format
+2. Lane 1 (Identity): Verify wallet-anchored AI agent identity
+3. Lane 3 (Telemetry): Broadcast summarized context updates
+
+Create client/src/lib/sharedAIContext.ts that:
+- Maintains a local context cache
+- Syncs deltas via global relay
+- Merges context from multiple apps
+- Respects foundation lane rate limits
+```
+
+**Security Guardrails for AI Mesh:**
+- AI agents must respect foundation lane isolation (lanes 0-3 only for global relay)
+- Wallet signature verification prevents spoofed AI nodes
+- Payload limits (64KB) constrain AI context size
+- 5-minute timestamp drift prevents replay attacks
+
+---
 
 ### Sovereign Media Mesh
 
