@@ -21,6 +21,8 @@ wearos-app/
 # Private/internal docs
 audit/
 SECURITY_AUDIT.md
+DEPLOYMENT_FIX.md
+DEPLOYMENT_FIXES_SUMMARY.md
 IPFS_PRODUCTION_SETUP.md
 PRODUCTION_READY.md
 Replitbak.md
