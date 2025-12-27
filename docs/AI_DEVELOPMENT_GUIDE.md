@@ -16,9 +16,10 @@ P3 Protocol is architected for the AI-assisted development era. This guide shows
 5. [Node Configuration by App Type](#node-configuration-by-app-type)
 6. [The Three Shells](#the-three-shells)
 7. [Device Extension Prompts](#device-extension-prompts)
-8. [Forward-Looking Blueprints](#forward-looking-blueprints)
+8. [Atlas Mashup Gallery](#atlas-mashup-gallery)
+9. [Forward-Looking Blueprints](#forward-looking-blueprints)
    - [Global AI Mesh Futures](#global-ai-mesh-futures)
-9. [AI Prompt Recipe Book](#ai-prompt-recipe-book)
+10. [AI Prompt Recipe Book](#ai-prompt-recipe-book)
 
 ---
 
@@ -555,6 +556,280 @@ AI Prompt:
 for Atlas. Use the intent matching from alexa.ts but add support 
 for Atlas mode navigation ('open TV mode', 'show my messages'). 
 Return SSML-formatted speech responses for TTS processing."
+```
+
+---
+
+## Atlas Mashup Gallery
+
+Remixing Atlas into new concepts is not only possible but is the exact scenario the Atlas Canvas Stack and API v2 were built for. Because the repo uses a **Substrate Architecture**, an AI can help you "prompt" new versions into existence by generating new External App Manifests and Site Profiles.
+
+### How AI Remixing Works
+
+| Action | What AI Generates |
+|--------|-------------------|
+| "Generate an ExternalAppManifest for X" | JSON that tells Atlas shell which lanes to listen to |
+| "Remix AtlasCanvas.tsx to prioritize modes Y and Z" | Modified `useAtlasStore.ts` logic to lock UI into specific modes |
+| "Create a 2G-optimized Site Profile" | Configured `dictionary.ts` and `priority.ts` for low-bandwidth |
+
+---
+
+### Game Creation & NFT Assets
+
+**Problem:** Interactive gaming with verifiable asset ownership.
+
+**Components:**
+- **Game Deck** (`server/atlas/gamedeck`) for game logic
+- **ReceiptBoundToken.sol** for NFT assets only usable with valid anchored receipts
+- **8-Lane Streaming** - video on Lane 6, game state on Lane 3 with minimal lag
+
+**AI Prompt:**
+```
+"Create an ExternalAppManifest for an interactive play-along game stream 
+that uses Lane 6 for video and Lane 3 for real-time player position updates. 
+Bind all in-game items to ReceiptBoundToken verification."
+```
+
+---
+
+### Decentralized Video Platform
+
+**Problem:** Video access in regions where centralized platforms are blocked or slow.
+
+**Components:**
+- **Mesh Client** (`client/src/lib/meshClient.ts`) for P2P relay
+- **Feed Mode** via `getRenderPayload` for trending content
+- **Node caching** - users receive video fragments from nearby nodes
+
+**AI Prompt:**
+```
+"Configure Atlas as a localized content mesh where nodes cache and relay 
+video chunks to neighbors. Optimize for 2G regions by maximizing 
+compression in dictionary.ts and enabling aggressive mesh caching."
+```
+
+---
+
+### Journalist "Verified Source" Portal
+
+**Problem:** Secure document drops with cryptographic proof of receipt timing.
+
+**Components:**
+- **Writer Mode** for content creation
+- **Nexus encryption** (TweetNaCl) for post-quantum secure interviews
+- **ZK-Receipts** proving document received at specific time without server seeing content
+
+**AI Prompt:**
+```
+"Remix AtlasCanvas to prioritize Writer and Nexus modes for a journalist 
+profile. Add a 'Confidential Drop-box' that auto-generates ZK-Receipts 
+for uploaded documents with timestamp proofs."
+```
+
+---
+
+### Election Watching Interface
+
+**Problem:** Real-time, publicly verifiable election results.
+
+**Components:**
+- **Pulse Mode** for live analytics
+- **Governance Mode** (replace DAO Proposals with Election Precincts)
+- **Lane 3** for real-time vote count pushes
+- **AnchorRegistry.sol** for immutable, public result verification
+
+**AI Prompt:**
+```
+"Generate an ExternalAppManifest for an Election Watcher app. Replace 
+Governance proposals with precinct data, push vote counts via Lane 3, 
+and auto-anchor results to blockchain using AnchorRegistry."
+```
+
+---
+
+### Gig Economy Instant Payments
+
+**Problem:** Workers need instant payment upon verified task completion.
+
+**Components:**
+- **Nexus Payments** for social/chat payments (Venmo for Web3)
+- **Atlas Payment Canvas** for merchant POS/invoicing
+- **Receipt anchoring** triggers instant payout
+
+**AI Prompt:**
+```
+"Create a gig-economy app manifest where workers receive instant payment 
+upon the anchoring of a task-completion receipt. Use Nexus for social 
+payments and Atlas Canvas for merchant-side QR generation."
+```
+
+---
+
+### Disaster Response Nerve Center
+
+**Problem:** Offline-capable emergency coordination across agencies.
+
+**Components:**
+- **NodeMode** + **PulseMode** for network status
+- **CCTVMode** + **WeatherMode** for situational awareness
+- **Lanes 0-3** prioritized for emergency telemetry
+- **Offline mesh fallback** when connectivity fails
+
+**AI Prompt:**
+```
+"Generate an ExternalAppManifest 'disaster-nerve-center' binding NodeMode, 
+PulseMode, CCTVMode, WeatherMode. Route emergency events over lanes 0-3 
+with offline cache fallback enabled."
+```
+
+---
+
+### Smart City Operations Grid
+
+**Problem:** Orchestrating multi-agency IoT data and control systems.
+
+**Components:**
+- **NodeStreamMode** for device telemetry
+- **GovernanceMode** for inter-agency coordination
+- **PaymentsMode** for utility billing
+- **Lane 3** for telemetry, **Lane 4** for actuator commands
+
+**AI Prompt:**
+```
+"Remix AtlasCanvas to register 'smart-city' profile prioritizing 
+NodeStream, Governance, Payments, Registry modes. Throttle lane-4 
+actuator commands via streaming.ts policy hook."
+```
+
+---
+
+### Creator Cooperative Studio
+
+**Problem:** Co-authoring media with instant monetization and fair splits.
+
+**Components:**
+- **WriterMode** + **GameDeckMode** + **GalleryMode**
+- **Marketplace receipts** for revenue tracking
+- **Mesh session handoff** on Lanes 2 and 6 for collaboration
+
+**AI Prompt:**
+```
+"Create a SiteProfile 'creator-coop' locking Writer, GameDeck, Gallery 
+modes and auto-spawning receipt-bound drops via gamedeck workflows. 
+Enable mesh session handoff for live co-authoring."
+```
+
+---
+
+### Biofabrication Lab Twin
+
+**Problem:** Synchronizing lab instrumentation with compliance proofs.
+
+**Components:**
+- **CalcMode** + **SandboxMode** for data analysis
+- **CameraMode** for microscopy capture
+- **Lane 3** for health telemetry
+- **ZKReceiptsVerifier** for experiment anchoring
+
+**AI Prompt:**
+```
+"Assemble an ExternalAppManifest 'biofab-lab-twin' that streams 
+instrumentation metrics over lane-3, captures microscopy via CameraMode, 
+and anchors every experiment result with ZK receipts."
+```
+
+---
+
+### DAO Governance War Room
+
+**Problem:** Live vote orchestration with real-time dispute mediation.
+
+**Components:**
+- **GovernanceMode** + **CallsMode** for deliberation
+- **WriterMode** for proposal drafting
+- **ReceiptsMode** for vote attestations
+- **Foundation lanes 0-3** for identity proofs in voting
+
+**AI Prompt:**
+```
+"Refit AtlasShell for 'dao-war-room' by pinning Governance, Calls, Writer, 
+Receipts modes and wiring lane-1 identity proofs into vote casting."
+```
+
+---
+
+### Immersive Field School
+
+**Problem:** Hybrid AR field instruction across varying bandwidth conditions.
+
+**Components:**
+- **TVMode** + **RadioMode** for content delivery
+- **NotesMode** + **PresenceTile** for collaboration
+- **Mesh session bridge** + **Device extensions** for AR handoffs
+- **Low-bandwidth manifests** via `abr.ts`
+
+**AI Prompt:**
+```
+"Create a 'field-school' profile that syncs TV, Radio, Notes, Presence 
+modes and generates low-bandwidth manifests in client/src/lib/media/abr.ts 
+for 2G/3G field conditions."
+```
+
+---
+
+### Carbon Market Exchange
+
+**Problem:** Auditable carbon credit settlement with live environmental telemetry.
+
+**Components:**
+- **WeatherMode** for satellite/sensor data
+- **TokensMode** + **AnalyticsTile** for trading
+- **ReceiptsMode** + **AnchorRegistry** for settlement
+- **Lane 4** for trade execution
+
+**AI Prompt:**
+```
+"Build 'carbon-exchange' manifest linking Weather, Tokens, Analytics, 
+Receipts modes and auto-anchoring trades via server/services/receipts.ts. 
+Ingest satellite data on lane-3."
+```
+
+---
+
+### Retail Pop-up Atlas
+
+**Problem:** Temporary POS networks with adaptive traffic management.
+
+**Components:**
+- **PaymentsMode** for transactions
+- **DirectoryMode** for inventory
+- **CameraMode** for security
+- **Lane QoS throttling** for POS vs marketing
+
+**AI Prompt:**
+```
+"Spin up 'retail-popup' canvas defaulting to Payments, Directory, Camera, 
+Notifications modes. Adjust lane priorities in streaming.ts for POS 
+burst traffic during peak hours."
+```
+
+---
+
+### Mission Control Mesh
+
+**Problem:** Aerospace telemetry and anomaly simulation with cryptographic command verification.
+
+**Components:**
+- **PulseMode** + **NodeStreamMode** for telemetry
+- **CCTVMode** for visual monitoring
+- **SandboxMode** for anomaly simulation
+- **Signed command receipts** on lanes 0-3 and 6
+
+**AI Prompt:**
+```
+"Draft 'mission-control' manifest binding Pulse, NodeStream, CCTV, 
+Sandbox modes. Enforce signed command routing with metaAdapter and 
+anchor all commands to blockchain."
 ```
 
 ---
