@@ -965,6 +965,8 @@ Directory modes with lane-2 task events and reminder notifications."
 
 Popular apps reimagined with Atlas's unique advantages. Not just "decentralized" - genuinely better.
 
+> *Trademarks belong to their respective owners. These examples describe functionality, not affiliation.*
+
 #### Discord → Mesh Guild
 
 **What's better:** Wallet-verified communities, provable moderation logs, offline mesh failover, truly encrypted DMs, no corporate surveillance.
