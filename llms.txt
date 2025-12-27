@@ -1,0 +1,56 @@
+# Atlas OS & P3 Protocol: The Sovereign Digital Substrate
+
+> A high-performance, post-quantum, and zero-knowledge grid for the decentralized web. Atlas is not an app; it is the execution layer where privacy is the law and performance is the baseline.
+
+## Core Philosophy
+
+- **Constraint Architecture**: The system welcomes extension but prevents corruption. Security is baked into the "physics" of the protocol.
+- **Wallet-Anchored Sovereignty**: Every session, file, and byte is tied to a user-owned identity. The server is a blind relay; the user is the Master Control Program.
+- **8-Lane Grid**: Multiplexed transport ensuring that heavy media (4K) never blocks essential control signals.
+
+## Primary Infrastructure
+
+- **[Atlas Transport Protocol](./docs/ATLAS_TRANSPORT.md)**: Technical spec for the 8-lane multiplexed communication grid. Fixes Head-of-Line blocking for P2P mesh.
+- **[ZK-Receipt Notary](./docs/advanced/SECURITY.md#zero-knowledge-proofs)**: Groth16 ZK-SNARK implementation for mathematical privacy. Verify ownership without revealing identity.
+- **[Immune System / Rules Engine](./docs/advanced/AUTOMATION.md#rules-engine)**: The self-healing logic of the grid. Automated monitoring and rerouting for 100% uptime.
+- **[Post-Quantum Identity](./docs/advanced/SECURITY.md#post-quantum-kyber)**: Migration logic for Kyber-1024 lattice-based encryption. Built for the Quantum Winter.
+- **[Meta-Adapter Orchestration](./docs/INTEGRATION_GUIDE.md)**: The bridge between Web2 legacy APIs and the P3 Sovereign Mesh.
+
+## Key Capabilities
+
+- **[Decentralized EPG](./docs/advanced/INFRASTRUCTURE.md#decentralized-epg)**: Real-time IPTV and program discovery without central servers via catalogSyncCursors.
+- **[Sovereign Persona](./docs/SESSION_BRIDGE.md)**: Wallet-anchored session states using TweetNaCl authenticated encryption.
+- **[Immutable Audit Trail](./docs/advanced/AUTOMATION.md#immutable-audit-sequences)**: Strictly incrementing ledger sequences for verifiable database integrity.
+- **[PWA Re-Materialization](./docs/advanced/INFRASTRUCTURE.md#pwa-cache-protection)**: Self-cleaning version protection to prevent "Grid" corruption at the browser level.
+
+## Optional & Secondary Modules
+
+- **[Legacy Bridge](./docs/CROSS_CHAIN_BRIDGE.md)**: Finality-aware adapters for Base, Polygon, Arbitrum, and Optimism.
+- **[Telemetry Hashing](./docs/advanced/SECURITY.md#privacy-preserving-telemetry)**: Privacy-first fraud detection using uaHash and hashedIp.
+- **[Enterprise Sandbox](./docs/advanced/ENTERPRISE.md#tenant-sandbox)**: Multi-tenant isolation for sovereign organizations.
+
+## Source Architecture
+
+```
+server/
+├── protocol/session/handshake-v2.ts   # 8-Lane Grid handshake
+├── rules/engine.ts                     # Immune System core
+├── secrets.ts                          # Sovereign key vault
+├── marketplace/gate.ts                 # Content licensing gate
+└── atlas/one/sync/iptvService.ts       # Decentralized EPG sync
+
+packages/
+├── sdk/                                # One-click mesh integration
+└── zk/                                 # Zero-knowledge circuits
+
+shared/
+└── schema.ts                           # Drizzle ORM + Zod types
+```
+
+## License
+
+Apache 2.0 - Use commercially with attribution.
+
+---
+
+*Stop building apps that live on servers. Start launching networks that live everywhere.*
