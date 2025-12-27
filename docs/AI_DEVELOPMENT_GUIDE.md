@@ -961,6 +961,85 @@ Directory modes with lane-2 task events and reminder notifications."
 
 ---
 
+### Build Your Own Version Of...
+
+Popular apps reimagined with Atlas's unique advantages. Not just "decentralized" - genuinely better.
+
+#### Discord → Mesh Guild
+
+**What's better:** Wallet-verified communities, provable moderation logs, offline mesh failover, truly encrypted DMs, no corporate surveillance.
+
+**Components:** MessagesMode, CallsMode, PresenceTile, ReceiptsMode, Lane-1 identity
+
+**AI Prompt:**
+```
+"Create an ExternalAppManifest 'mesh-guild' prioritizing Messages, Calls, 
+Presence, Receipts and enforce wallet gating with lane-1 identity checks 
+bound to receipts."
+```
+
+---
+
+#### Notion → Knowledge Mesh
+
+**What's better:** No vendor lock-in, zero outage risk (mesh failover), encrypted notes, verifiable edit history anchored on-chain, offline collaboration.
+
+**Components:** WriterMode, NotesMode, DirectoryMode, ReceiptsMode, Global Relay
+
+**AI Prompt:**
+```
+"Generate 'knowledge-mesh' manifest locking Writer, Notes, Directory, 
+Receipts with lane-2 edit streaming plus lane-3 keepalive for 
+collaborative sessions."
+```
+
+---
+
+#### Figma → Design Relay
+
+**What's better:** Multi-region latency solved via mesh, design approvals anchored as receipts, no single point of failure, peer-to-peer canvas sync.
+
+**Components:** NodeStreamMode, SandboxMode, ReceiptsMode, PresenceTile, Lane-6 media
+
+**AI Prompt:**
+```
+"Draft ExternalAppManifest 'design-relay' combining NodeStream, Sandbox, 
+Receipts, Presence to enable mesh-based multi-peer editing and anchor 
+revision receipts."
+```
+
+---
+
+#### Calendly → Mesh Scheduler
+
+**What's better:** No SaaS fees, cross-organization reach via global relay, booking proofs on-chain, instant video calls without third-party dependencies.
+
+**Components:** RegistryMode, DirectoryMode (calendar), CallsMode, ReceiptsMode
+
+**AI Prompt:**
+```
+"Create 'mesh-scheduler' manifest enabling Registry + Directory calendar 
+slots, CallsMode follow-ups, and auto-anchored booking receipts on 
+lane-1 identity verification."
+```
+
+---
+
+#### Twitch → Relay Streaming
+
+**What's better:** Viewers ARE the CDN (lower costs), censorship-resistant, creator rewards via receipts, global relay caching, no platform cut.
+
+**Components:** TVMode, NodeStreamMode, RewardTile, ReceiptsMode, Lane-6 video
+
+**AI Prompt:**
+```
+"Build 'relay-stream' profile wiring TV, NodeStream, Rewards, Receipts 
+so viewers relay lane-6 video chunks while creators mint reward receipts 
+for supporters."
+```
+
+---
+
 ## Forward-Looking Blueprints
 
 ### Global AI Mesh Futures
